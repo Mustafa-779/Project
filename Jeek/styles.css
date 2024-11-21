@@ -1,0 +1,170 @@
+/* 
+==============================
+General Body Styles 
+==============================
+*/
+body {
+    display: flex; /* Enables flexible layout. */
+    flex-direction: column; /* Stacks child elements vertically. */
+    min-height: 100vh; /* Full viewport height for proper layout. */
+}
+
+/* 
+==============================
+Navbar Styles 
+==============================
+*/
+header {
+    background-color: #007bff; /* Primary blue color for the navbar. */
+    padding: 16px 0; /* 16px padding above and below the navbar content. */
+}
+
+header img {
+    max-height: 100px; /* Restricts the logo's height to 100px. */
+    max-width: 100%; /* Ensures the logo remains responsive and fits within its container. */
+    object-fit: contain; /* Maintains the logo's aspect ratio without cropping. */
+    padding: 5px; /* Adds spacing around the logo for visual balance. */
+    border-radius: 5px; /* Adds subtle rounding to logo corners. */
+}
+
+.nav-link {
+    color: white; /* Sets link text to white. */
+    text-decoration: none; /* Removes underlining from links. */
+    padding: 8px; /* Adds 8px of padding inside the links for better clickability. */
+    transition: all 0.3s ease; /* Creates smooth hover effect transitions. */
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Adds a subtle translucent background on hover. */
+    color: #ffc107; /* Changes text color to yellow on hover. */
+    border-radius: 5px; /* Rounds corners of hover effect. */
+    text-decoration: underline; /* Adds underlining to emphasize interactivity. */
+}
+
+@media (max-width: 768px) {
+    /* Styles for screens 768px wide or smaller. */
+    .nav {
+        flex-direction: column; /* Stacks navigation links vertically. */
+    }
+    .nav-link {
+        text-align: center; /* Centers text for smaller screens. */
+        margin-bottom: 8px; /* Adds spacing between links for clarity. */
+    }
+}
+
+/* 
+==============================
+Footer Styles 
+==============================
+*/
+footer {
+    background-color: #f8f9fa; /* Light gray footer background. */
+    padding: 32px 0; /* 32px padding above and below the footer content. */
+    text-align: center; /* Centers all footer text. */
+}
+
+footer h5 {
+    font-size: 20px; /* Sets footer headings to 20px font size. */
+    margin-bottom: 16px; /* Adds spacing below each heading. */
+    color: #333; /* Dark gray color for text contrast. */
+}
+
+footer a {
+    color: #000; /* Sets link text color to black. */
+    text-decoration: none; /* Removes underlining from footer links. */
+    transition: color 0.3s ease; /* Smooth hover color transition. */
+}
+
+footer a:hover {
+    color: #007bff; /* Changes link color to blue on hover. */
+    text-decoration: underline; /* Adds underline to indicate interaction. */
+}
+
+.footer-links ul {
+    list-style: none; /* Removes default bullet points from list items. */
+    padding: 0; /* Removes default padding. */
+}
+
+.footer-links li {
+    margin-bottom: 8px; /* Adds spacing between list items. */
+}
+
+/* Social Media Icons in Footer */
+.social-icons {
+    display: flex; /* Enables flexible layout for icons. */
+    justify-content: center; /* Centers icons horizontally. */
+    gap: 16px; /* Adds equal spacing between icons. */
+    margin-top: 16px; /* Adds spacing above social icons. */
+}
+
+.social-icons a {
+    font-size: 28px; /* Sets icon size. */
+    color: #000; /* Default color for icons. */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and size transitions. */
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Changes icon color to blue on hover. */
+    transform: scale(1.2); /* Enlarges icon slightly on hover. */
+}
+
+@media (max-width: 768px) {
+    /* Responsive styles for small screens. */
+    .social-icons {
+        flex-direction: column; /* Stacks icons vertically. */
+    }
+}
+
+/* 
+==============================
+Card Styles 
+==============================
+*/
+.card {
+    border-radius: 10px; /* Adds rounded corners to cards. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations for hover effects. */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Moves the card up slightly on hover. */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth. */
+}
+
+.card-img-top {
+    height: 300px; /* Sets a fixed height for card images. */
+    object-fit: cover; /* Ensures images fill the area without distortion. */
+    max-width: 100%; /* Keeps images responsive. */
+}
+
+/* 
+==============================
+Contact Owner Section 
+==============================
+*/
+.contact-owner-section h4 {
+    font-size: 24px; /* Heading size for emphasis. */
+    color: #007bff; /* Blue color for headings. */
+    border-bottom: 2px solid #007bff; /* Adds a decorative blue underline. */
+    padding-bottom: 8px; /* Adds spacing below the heading. */
+}
+
+.contact-owner-section .d-flex {
+    align-items: center; /* Aligns icons and text vertically. */
+    margin-bottom: 16px; /* Adds spacing between contact items. */
+}
+
+.contact-owner-section i {
+    color: #6c757d; /* Gray color for icons. */
+    font-size: 24px; /* Sets a consistent icon size. */
+    margin-right: 12px; /* Adds spacing between icons and text. */
+}
+
+.contact-owner-section a {
+    color: #007bff; /* Blue color for links. */
+    transition: color 0.3s ease; /* Smooth hover transition for color. */
+}
+
+.contact-owner-section a:hover {
+    color: #0056b3; /* Darker blue color on hover. */
+    text-decoration: underline; /* Adds underline to emphasize links. */
+}

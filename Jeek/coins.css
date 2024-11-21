@@ -1,0 +1,156 @@
+/* 
+   Global Styles 
+   Applies basic styles only to the body and excludes the footer. 
+   Ensures the footer retains its default styling.
+*/
+
+body {
+  background-color: #f9f9f9; /* Light gray for a neutral background. */
+  margin: 0; /* Resetting default margins for a clean layout. */
+  padding: 0; /* Resetting default padding for consistency. */
+}
+
+/* 
+   Main Content 
+   Styles the main container and centers the content. 
+   No global font-family or color to avoid affecting the footer.
+*/
+
+main {
+  padding: 40px; /* Adds space around the content. */
+  text-align: center; /* Centers the heading and grid. */
+  margin-bottom: 40px; /* Add spacing between main content and footer */
+}
+
+/* 
+   Page Title 
+   Specific to the heading in the main content. 
+*/
+
+main h1 {
+  font-size: 32px; /* Large enough to stand out. */
+  margin-bottom: 30px; /* Adds space below the title. */
+  color: #555; /* Softer gray for a subtle look. */
+}
+
+/* 
+   Grid Layout 
+   Arranges cards in rows and adjusts automatically for different screens. 
+*/
+
+.grid {
+  display: grid; /* Enables grid layout. */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamic card sizing. */
+  gap: 30px; /* Spacing between cards. */
+}
+
+/* 
+   Card Design 
+   Gives each card a clean and modern look. 
+*/
+
+.card {
+  position: relative; /* Ensures badge stays inside the card. */
+  background-color: #fff; /* White background for contrast. */
+  border: 2px solid #dedede; /* Light border for definition. */
+  border-radius: 15px; /* Smooth, rounded edges. */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth. */
+  text-align: center; /* Centers text and images. */
+  overflow: hidden; /* Prevents content overflow. */
+  text-decoration: none; /* Removes underline from links. */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds smooth hover effects. */
+}
+
+/* 
+   Hover Effect 
+   Adds interactivity by lifting the card slightly on hover. 
+*/
+
+.card:hover {
+  transform: translateY(-10px); /* Moves the card up slightly. */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Darkens the shadow for effect. */
+}
+
+/* 
+   Badge (Price Tag) 
+   Displays the price in the top-right corner. 
+*/
+
+.card .badge {
+  position: absolute; /* Fixes the badge in place. */
+  top: 15px; /* Distance from the top. */
+  right: 15px; /* Distance from the right. */
+  background-color: #aa1434; /* Red for visibility. */
+  color: white; /* White text for contrast. */
+  padding: 8px 15px; /* Adds padding for balance. */
+  border-radius: 20px; /* Rounded shape for a modern look. */
+  font-size: 16px; /* Text size optimized for clarity. */
+  font-weight: bold; /* Makes the price stand out. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth. */
+}
+
+/* 
+   Image Container 
+   Focuses on displaying the coin images prominently. 
+*/
+
+.card .image {
+  width: 100%; /* Fills the card width. */
+  height: 300px; /* Provides enough height for the images. */
+  border-radius: 10px 10px 0 0; /* Matches the card’s rounded corners. */
+  overflow: hidden; /* Ensures images stay inside the container. */
+}
+
+/* 
+   Image Styling 
+   Ensures images fit neatly inside the card without cropping. 
+*/
+
+.card .image img {
+  width: 100%; /* Stretches the image to fill the container. */
+  height: 100%; /* Stretches the image vertically as well. */
+  object-fit: contain; /* Prevents cropping by keeping the entire image visible. */
+}
+
+/* 
+   Coin Name 
+   Styles the text displayed below the images. 
+   Makes it modern, clean, and easy to read. 
+*/
+
+.card .info {
+  padding: 10px; /* Adds space around the text. */
+  font-size: 18px; /* Slightly smaller font for a minimalist look. */
+  font-family: 'Arial', sans-serif; /* A clean, modern sans-serif font. */
+  color: #444; /* Softer gray for a subtle appearance. */
+  font-weight: 400; /* Removes boldness for a lighter look. */
+  text-transform: capitalize; /* Capitalizes each word for consistency. */
+  letter-spacing: 0.5px; /* Slight spacing for readability. */
+  line-height: 1.5; /* Improves spacing between lines for clarity. */
+  margin: 0; /* Removes unnecessary margins. */
+  text-align: center; /* Centers the coin names for better alignment. */
+}
+
+.separator {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #0b0464, #4208e2, #0a090c);
+  margin: 30px 0; /* Adjust spacing above and below the line */
+  width: 80%; /* Makes the line slightly narrower than the content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1px;
+}
+
+
+
+/* 
+   Responsive Design 
+   Adjusts the grid layout for smaller screens. 
+*/
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Shrinks card size for smaller screens. */
+  }
+}

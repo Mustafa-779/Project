@@ -1,0 +1,62 @@
+<!-- Login modal (Pop-up) -->
+<div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+    <!-- Modal dialog container -->
+    <div class="modal-dialog">
+        <!-- Modal content: Contains header, body, and footer -->
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <!-- Title for the modal -->
+                <h5 class="modal-title" id="signInModalLabel">Login or create an account</h5>
+                <!-- Close button to dismiss the modal -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal body: Contains the login form -->
+            <div class="modal-body">
+                <!-- Login form starts -->
+                <form>
+                    <!-- Username input field -->
+                    <div class="mb-3">
+                        <!-- Label for username -->
+                        <label for="username" class="form-label">Username</label>
+                        <!-- Input group for username with icon -->
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                        </div>
+                    </div>
+
+                    <!-- Password input field -->
+                    <div class="mb-3">
+                        <!-- Label for password -->
+                        <label for="password" class="form-label">Password</label>
+                        <!-- Input group for password with icon -->
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                        </div>
+                        <!-- Link to Forgot Password modal -->
+                        <div class="text-end">
+                            <a href="#" class="small text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot your password?</a>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="d-grid">
+                        <!-- Button spans the full width of its container -->
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer text-center">
+                <!-- Link to Create Account modal -->
+                <p class="mb-0 w-100">
+                    <a href="#" class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create new account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

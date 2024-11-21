@@ -1,0 +1,14 @@
+/* 
+==============================
+Icon Styles 
+==============================
+*/
+.icon-link {
+    color: inherit; /* Default text color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color change */
+}
+
+.icon-link:hover {
+    color: #007bff; /* Blue color on hover */
+}

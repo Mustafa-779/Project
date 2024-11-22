@@ -1,0 +1,32 @@
+.bg-info {
+    background-color: #17a2b8; /* Light blue background color */
+}
+
+.text-white {
+    color: white; /* White text color */
+}
+
+.text-center {
+    
+    text-align: center; /* Center the text */
+}
+
+.py-4 {
+    padding-top: 2rem; /* Add vertical padding (top) */
+    padding-bottom: 2rem; /* Add vertical padding (bottom) */
+}
+
+.fs-5 {
+    font-size: 1.25rem; /* Slightly larger font size for the heading */
+    font-weight: 600; /* Semi-bold text for better emphasis */
+    line-height: 1.5; /* Improved line height for readability */
+    max-width: 90%; /* Limit the width of the text */
+    margin: 0 auto; /* Center the text block */
+    text-transform: uppercase; /* Uppercase text for added emphasis */
+    letter-spacing: 2px; /* Added letter spacing for a more open feel */
+}
+
+/* Optional: Add a subtle hover effect */
+.bg-info:hover {
+    background-color: #138496; /* Darker shade of blue when hovered */
+}

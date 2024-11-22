@@ -27,6 +27,13 @@ header img {
     border-radius: 5px; /* Adds subtle rounding to logo corners. */
 }
 
+.header-message {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
 .nav-link {
     color: white; /* Sets link text to white. */
     text-decoration: none; /* Removes underlining from links. */

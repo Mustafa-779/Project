@@ -13,8 +13,8 @@
         <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <!-- Link to custom styles for further customization -->
-        <link rel="stylesheet" href="navbar-footer.css">
-        <link rel="stylesheet" href="coins.css" >
+        <link rel="stylesheet" href="css-main/navbar-footer.css">
+        <link rel="stylesheet" href="css-main/coins.css" >
         <style>
             /* Placeholder for additional custom styles (inline CSS) */
         </style>
@@ -29,7 +29,7 @@
             <!-- Logo and Store Name Section -->
             <div class="d-flex align-items-center">
                 <!-- Logo Image -->
-                <img src="jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2" style="height: 100px; width: 120px;">
+                <img src="imgs/jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2" style="height: 100px; width: 120px;">
                 <!-- Placeholder for store name -->
                 <span class="fs-4 text-white"></span>
             </div>
@@ -56,7 +56,7 @@
                 <!-- Unordered list for navigation links -->
                 <ul class="nav me-3">
                     <!-- Individual navigation links -->
-                    <li class="nav-item"><a href="Home Page.html" class="nav-link text-white">Home</a></li>
+                    <li class="nav-item"><a href="HomePage.html" class="nav-link text-white">Home</a></li>
                     <li class="nav-item"><a href="categories.html" class="nav-link text-white">Categories</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact Us</a></li>
@@ -65,6 +65,8 @@
                 <!-- A button styled with Bootstrap's outline classes, triggers the sign-in modal -->
                 <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signInModal">Login</button>
             </nav>
+
+            
         </div>
     </header>
 
@@ -299,64 +301,115 @@
 
 
     <main class="container py-4">
-        <h1 class="text-center mb-4">Coins & Stamps</h1>
-        <div class="row g-4">
-            <!-- Card 1 -->
-            <div class="col-md-4">
-                <div class="card shadow border-0">
-                    <img src="russian coin.jpg" class="card-img-top rounded-top" alt="Russian Coin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Imperial Russian Kopek</h5>
-                        <p class="card-text text-muted">1880 AD</p>
-                        <button class="btn btn-outline-primary disabled">$27</button>
-                    </div>
-                </div>
+
+        <!-- Categories section -->
+    <section class="container my-5">
+        <!-- Row to organize categories horizontally -->
+        <div class="row text-center">
+            <!-- Category: Art -->
+            <div class="col">
+                <!-- Link with an icon and label -->
+                <a href="art.html" class="icon-link">
+                    <!-- Icon representing art -->
+                    <i class="bi bi-palette display-4 mb-2"></i>
+                    <p>Art</p>
+                </a>
             </div>
-            <!-- Card 2 -->
-            <div class="col-md-4">
-                <div class="card shadow border-0">
-                    <img src="ottoman gold coin.jpg" class="card-img-top rounded-top" alt="Ottoman Gold Coin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Ottoman Lira</h5>
-                        <p class="card-text text-muted">1808 AD</p>
-                        <button class="btn btn-outline-primary disabled">$35</button>
-                    </div>
-                </div>
+            <!-- Category: Interiors -->
+            <div class="col">
+                <a href="interiors.html" class="icon-link">
+                    <!-- Icon representing interiors -->
+                    <i class="bi bi-house-door display-4 mb-2"></i>
+                    <p>Interiors</p>
+                </a>
             </div>
-            <!-- Card 3 -->
-            <div class="col-md-4">
-                <div class="card shadow border-0">
-                    <img src="Constantine_multiple_CdM_Beistegui_233_0.jpeg" class="card-img-top rounded-top" alt="Constantine Coin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Roman Empire Constantine</h5>
-                        <p class="card-text text-muted">312 AD</p>
-                        <button class="btn btn-outline-primary disabled">$45</button>
-                    </div>
-                </div>
+            <!-- Category: Jewelry -->
+            <div class="col">
+                <a href="jewelry.html" class="icon-link">
+                    <!-- Icon representing jewelry -->
+                    <i class="bi bi-gem display-4 mb-2"></i>
+                    <p>Jewelry</p>
+                </a>
             </div>
-            <!-- Card 4 -->
-            <div class="col-md-4">
-                <div class="card shadow border-0">
-                    <img src="imperial coin.png" class="card-img-top rounded-top" alt="Imperial Coin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Imperial Russian Ruble</h5>
-                        <p class="card-text text-muted">1905 AD</p>
-                        <button class="btn btn-outline-primary disabled">$29</button>
-                    </div>
-                </div>
+            <!-- Category: Watches -->
+            <div class="col">
+                <a href="watches.html" class="icon-link">
+                    <!-- Icon representing watches -->
+                    <i class="bi bi-watch display-4 mb-2"></i>
+                    <p>Watches</p>
+                </a>
             </div>
-            <!-- Card 5 -->
-            <div class="col-md-4">
-                <div class="card shadow border-0">
-                    <img src="con5.jpg" class="card-img-top rounded-top" alt="Unknown Coin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Imperial Spain Peseta</h5>
-                        <p class="card-text text-muted">1869 AD</p>
-                        <button class="btn btn-outline-primary disabled">$33</button>
-                    </div>
-                </div>
+            <!-- Category: Coins & Stamps -->
+            <div class="col">
+                <a href="coins.html" class="icon-link text-primary">
+                    <!-- Icon representing coins and stamps -->
+                    <i class="bi bi-coin display-4 mb-2 text-primary"></i>
+                    <p class="fw-bold">Coins & Stamps</p>
+                </a>
+            </div>
+            <!-- Category: Books & History -->
+            <div class="col">
+                <a href="bookss.html" class="icon-link">
+                    <!-- Icon representing books and history -->
+                    <i class="bi bi-book display-4 mb-2"></i>
+                    <p>Books & History</p>
+                </a>
             </div>
         </div>
+    </section>
+
+        <h1 class="text-center mb-4">Coins & Stamps</h1>
+        <div class="grid">
+            <div class="card">
+              <div class="image"><img src="imgs/con1.jfif" alt="" height="150px" width="150px"></div>
+              <p>Abdullah</p>
+              <button>View</button>
+            </div>
+            <!-- Repeat this card as needed -->
+            <div class="card">
+              <div class="image"><img src="imgs/con2.jfif" alt="" height="150px" width="150px"></div>
+              <p>Ameen</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/con3.jfif" alt="" height="150px" width="150px"></div>
+              <p>Omar</p>
+              <button>View</button>
+            </div>
+      
+            <div class="card">
+              <div class="image"><img src="imgs/con4.jfif" alt="" height="150px" width="150px"></div>
+              <p>Saad</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/con5.jpg" alt="" height="150px" width="150px"></div>
+              <p>Fahad</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/con6.jfif" alt="" height="150px" width="150px"></div>
+              <p>Yassen</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/con7.jfif" alt="" height="150px" width="150px"></div>
+              <p>Gomaiz</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/con8.jfif" alt="" height="150px" width="150px"></div>
+              <p>Ronaldo</p>
+              <button>View</button>
+            </div>
+      
+            <!-- Add more cards here -->
+          </div>
+          <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+          </div>
     </main>
     
     

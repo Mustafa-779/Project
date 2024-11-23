@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->select_db($dbname);
 
 // Step 2: Create Tables
-// Users table
+// Users table with security question and answer
 $sql_users = "
 CREATE TABLE IF NOT EXISTS Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS Users (
     email VARCHAR(255) UNIQUE NOT NULL,
     phone_number VARCHAR(15),
     password VARCHAR(255) NOT NULL,
+    security_question VARCHAR(255) NOT NULL, -- Security question
+    security_answer VARCHAR(255) NOT NULL,   -- Answer to the security question
     role ENUM('admin', 'customer', 'staff') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );";

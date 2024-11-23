@@ -59,10 +59,10 @@
                 <!-- Unordered list for navigation links -->
                 <ul class="nav me-3">
                     <!-- Individual navigation links -->
-                    <li class="nav-item"><a href="HomePage.html" class="nav-link text-white">Home</a></li>
-                    <li class="nav-item"><a href="categories.html" class="nav-link text-white">Categories</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact Us</a></li>
+                    <li class="nav-item"><a href="HomePage.php" class="nav-link text-white">Home</a></li>
+                    <li class="nav-item"><a href="categories.php" class="nav-link text-white">Categories</a></li>
+                    <li class="nav-item"><a href="about.php" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="contact.php" class="nav-link text-white">Contact Us</a></li>
                 </ul>
                 <!-- Login Button -->
                 <!-- A button styled with Bootstrap's outline classes, triggers the sign-in modal -->
@@ -310,7 +310,7 @@
             <!-- Category: Art -->
             <div class="col">
                 <!-- Link with an icon and label -->
-                <a href="art.html" class="icon-link">
+                <a href="art.php" class="icon-link">
                     <!-- Icon representing art -->
                     <i class="bi bi-palette display-4 mb-2"></i>
                     <p>Art</p>
@@ -318,7 +318,7 @@
             </div>
             <!-- Category: Interiors -->
             <div class="col">
-                <a href="interiors.html" class="icon-link">
+                <a href="interiors.php" class="icon-link">
                     <!-- Icon representing interiors -->
                     <i class="bi bi-house-door display-4 mb-2"></i>
                     <p>Interiors</p>
@@ -326,7 +326,7 @@
             </div>
             <!-- Category: Jewelry -->
             <div class="col">
-                <a href="jewelry.html" class="icon-link">
+                <a href="jewelry.php" class="icon-link">
                     <!-- Icon representing jewelry -->
                     <i class="bi bi-gem display-4 mb-2"></i>
                     <p>Jewelry</p>
@@ -334,7 +334,7 @@
             </div>
             <!-- Category: Watches -->
             <div class="col">
-                <a href="watches.html" class="icon-link text-primary">
+                <a href="watches.php" class="icon-link text-primary">
                     <!-- Icon representing watches -->
                     <i class="bi bi-watch display-4 mb-2"></i>
                     <p class="fw-bold">Watches</p>
@@ -342,7 +342,7 @@
             </div>
             <!-- Category: Coins & Stamps -->
             <div class="col">
-                <a href="coins.html" class="icon-link">
+                <a href="coins.php" class="icon-link">
                     <!-- Icon representing coins and stamps -->
                     <i class="bi bi-coin display-4 mb-2"></i>
                     <p>Coins & Stamps</p>
@@ -350,7 +350,7 @@
             </div>
             <!-- Category: Books & History -->
             <div class="col">
-                <a href="bookss.html" class="icon-link">
+                <a href="bookss.php" class="icon-link">
                     <!-- Icon representing books and history -->
                     <i class="bi bi-book display-4 mb-2"></i>
                     <p>Books & History</p>

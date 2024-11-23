@@ -61,10 +61,10 @@
                     <!-- Unordered list for navigation links -->
                     <ul class="nav me-3">
                         <!-- Individual navigation links -->
-                        <li class="nav-item"><a href="HomePage.html" class="nav-link text-white">Home</a></li>
-                        <li class="nav-item"><a href="categories.html" class="nav-link text-white">Categories</a></li>
-                        <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact Us</a></li>
+                        <li class="nav-item"><a href="HomePage.php" class="nav-link text-white">Home</a></li>
+                        <li class="nav-item"><a href="categories.php" class="nav-link text-white">Categories</a></li>
+                        <li class="nav-item"><a href="about.php" class="nav-link text-white">About</a></li>
+                        <li class="nav-item"><a href="contact.php" class="nav-link text-white">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -79,7 +79,7 @@
                             <!-- List of links to account pages -->
                             <li class="nav-item">
                                 <div class="row">
-                                    <a href="Profile.html" class="icon-link nav-link" aria-current="page">
+                                    <a href="Profile.php" class="icon-link nav-link" aria-current="page">
                                         <i class="bi bi-person-vcard display-5 mb-2" style="margin-right: 10px"></i>
                                         Profile
                                     </a>
@@ -87,7 +87,7 @@
                             </li>
                             <li class="nav-item">
                                 <div class="row">
-                                    <a href="MyItems.html" class="icon-link nav-link" aria-current="page">
+                                    <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
                                         <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
                                         My Items
                                     </a>
@@ -95,7 +95,7 @@
                             </li>
                             <li class="nav-item">
                                 <div class="row">
-                                    <a href="Favorites.html" class="icon-link nav-link" aria-current="page">
+                                    <a href="Favorites.php" class="icon-link nav-link" aria-current="page">
                                         <i class="bi bi-bookmark-heart display-6 mb-2" style="margin-right: 10px"></i>
                                         Favorites
                                     </a>

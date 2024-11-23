@@ -61,10 +61,10 @@
                 <!-- Unordered list for navigation links -->
                 <ul class="nav me-3">
                     <!-- Individual navigation links -->
-                    <li class="nav-item"><a href="HomePage.html" class="nav-link text-white">Home</a></li>
-                    <li class="nav-item"><a href="categories.html" class="nav-link text-white">Categories</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact Us</a></li>
+                    <li class="nav-item"><a href="HomePage.php" class="nav-link text-white">Home</a></li>
+                    <li class="nav-item"><a href="categories.php" class="nav-link text-white">Categories</a></li>
+                    <li class="nav-item"><a href="about.php" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="contact.php" class="nav-link text-white">Contact Us</a></li>
                 </ul>
                 <!-- Login Button -->
                 <!-- A button styled with Bootstrap's outline classes, triggers the sign-in modal -->
@@ -306,37 +306,37 @@
     <main class="flex-grow-1">
         <section class="categories">
             <div class="category">
-                <a href="art.html">
+                <a href="art.php">
                     <img src="imgs/Art-Bundle.webp" alt="Art">
                     <h2>Art</h2>
                 </a>
             </div>
             <div class="category">
-                <a href="interiors.html">
+                <a href="interiors.php">
                     <img src="imgs/interior-vintage.jpg" alt="Interiors">
                     <h2>Interiors</h2>
                 </a>
             </div>
             <div class="category">
-                <a href="jewelry.html">
+                <a href="jewelry.php">
                     <img src="imgs/necklace.png" alt="Jewelry">
                     <h2>Jewelry</h2>
                 </a>
             </div>
             <div class="category">
-                <a href="watches.html">
+                <a href="watches.php">
                     <img src="imgs/vintage-watch-collection-timeless-view-blue-velvet_905033-32240.png" alt="Watches">
                     <h2>Watches</h2>
                 </a>
             </div>
             <div class="category">
-                <a href="coins.html">
+                <a href="coins.php">
                     <img src="imgs/silver coins.jpeg" alt="Coins & Stamps">
                     <h2>Coins & Stamps</h2>
                 </a>
             </div>
             <div class="category">
-                <a href="bookss.html">
+                <a href="bookss.php">
                     <img src="imgs/books-4k.png" alt="Books & History">
                     <h2>Books & History</h2>
                 </a>

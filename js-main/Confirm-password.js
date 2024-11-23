@@ -4,27 +4,27 @@
 const registerForm = document.getElementById('registerForm');
 const passwordField = document.getElementById('password');
 const confirmPasswordField = document.getElementById('confirmPassword');
-const passwordErrorMessage = document.getElementById('passwordErrorMessage');
+const passwordError = document.getElementById('passwordError');
 
 // Add event listener to form submit
-registerForm.addEventListener('submit', function(event) {
-    // Check if passwords match
-    if (passwordField.value !== confirmPasswordField.value) {
-        // Prevent form submission
-        event.preventDefault();
-        // Display error message
-        passwordErrorMessage.style.display = 'block';
-    } else {
-        // Hide error message if passwords match
-        passwordErrorMessage.style.display = 'none';
-    }
-});
+registerForm.addEventListener('submit', function (event) {
+    // Get trimmed values of the passwords
+    const password = passwordField.value.trim();
+    const confirmPassword = confirmPasswordField.value.trim();
 
-// Optional: Add real-time validation (while typing)
-confirmPasswordField.addEventListener('input', function() {
-    if (passwordField.value !== confirmPasswordField.value) {
-        passwordErrorMessage.style.display = 'block';
+    // Check if passwords match
+    if (password === "" || confirmPassword === "") {
+        // Prevent form submission if either password is empty
+        event.preventDefault();
+        passwordError.textContent = "Password fields cannot be empty.";
+        passwordError.style.display = "block";
+    } else if (password !== confirmPassword) {
+        // Prevent form submission if passwords do not match
+        event.preventDefault();
+        passwordError.textContent = "Passwords do not match!";
+        passwordError.style.display = "block";
     } else {
-        passwordErrorMessage.style.display = 'none';
+        // If passwords match, allow form submission
+        passwordError.style.display = "none";
     }
 });

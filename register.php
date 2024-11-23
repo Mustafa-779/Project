@@ -23,16 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone_number = mysqli_real_escape_string($conn, $_POST['phone_number']);  // Added phone number
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $security_question = mysqli_real_escape_string($conn, $_POST['security_question']);
     $security_answer = mysqli_real_escape_string($conn, $_POST['security_answer']);
+    
+    // Default role as customer
+    $role = 'customer';
 
     // Hash the password for security
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // SQL query to insert data into Users table
-    $sql = "INSERT INTO Users (first_name, last_name, username, email, password, security_question, security_answer, created_at)
-            VALUES ('$first_name', '$last_name', '$username', '$email', '$hashed_password', '$security_question', '$security_answer', NOW())";
+    $sql = "INSERT INTO Users (first_name, last_name, username, email, phone_number, password, security_question, security_answer, role, created_at)
+            VALUES ('$first_name', '$last_name', '$username', '$email', '$phone_number', '$hashed_password', '$security_question', '$security_answer', '$role', NOW())";
 
     if ($conn->query($sql) === TRUE) {
         // Registration successful, redirect to login page

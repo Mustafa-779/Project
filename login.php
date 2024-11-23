@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];  // You can use this to check the role if needed
 
-            // Redirect to the user dashboard or home page after successful login
-            header("Location: GoldenWatch.php");
+            // Redirect to the logged-in page
+            header("Location: loggedHomePage.php");
             exit();
         } else {
             // Invalid password

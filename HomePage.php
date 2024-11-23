@@ -202,12 +202,12 @@
 
             <div class="modal-body">
                 <!-- Registration form -->
-                <form action="register.php" method="POST" id="registerForm">
+                <form action="register.php" method="POST">
                     <div class="mb-3">
                         <label for="firstName" class="form-label">First Name</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" id="firstName" name="first_name" required>
+                            <input type="text" class="form-control" id="firstName" name="first_name" required placeholder="Enter your first name">
                         </div>
                     </div>
 
@@ -215,7 +215,7 @@
                         <label for="lastName" class="form-label">Last Name</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                            <input type="text" class="form-control" id="lastName" name="last_name" required>
+                            <input type="text" class="form-control" id="lastName" name="last_name" required placeholder="Enter your last name">
                         </div>
                     </div>
 
@@ -223,7 +223,7 @@
                         <label for="username" class="form-label">Username</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" class="form-control" id="username" name="username" required placeholder="Choose a username">
                         </div>
                     </div>
 
@@ -231,23 +231,30 @@
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email address">
                         </div>
                     </div>
-
+                    
                     <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                            <input type="tel" class="form-control" id="phoneNumber" name="phone_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="123-456-7890">
-                        </div>
-                    </div>
+    <label for="phoneNumber" class="form-label">Phone Number</label>
+    <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+        <input 
+            type="tel" 
+            class="form-control" 
+            id="phoneNumber" 
+            name="phone_number" 
+            minlength="10" 
+            required 
+            placeholder="Enter your phone number">
+    </div>
+</div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
                         </div>
                     </div>
 
@@ -255,13 +262,8 @@
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required placeholder="Re-enter your password">
                         </div>
-                    </div>
-
-                    <!-- Password mismatch error message (placed above register button) -->
-                    <div id="passwordErrorMessage" class="text-danger" style="display:none; text-align: center;">
-                        <strong>Passwords do not match!</strong>
                     </div>
 
                     <div class="mb-3">
@@ -281,7 +283,7 @@
                         <label for="securityAnswer" class="form-label">Answer</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-                            <input type="text" class="form-control" id="securityAnswer" name="security_answer" required>
+                            <input type="text" class="form-control" id="securityAnswer" name="security_answer" required placeholder="Enter your answer">
                         </div>
                     </div>
 
@@ -299,6 +301,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 

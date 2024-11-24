@@ -5,7 +5,7 @@
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
     <head>
-        <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
+     
         <meta charset="UTF-8" />
         <!-- Ensures responsive design for all devices (mobile-first design) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -291,3 +291,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+<!-- wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->

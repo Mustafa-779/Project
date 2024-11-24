@@ -1,29 +1,17 @@
-<?php
-// about.php
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <!-- Head Section: Contains metadata and external resource links -->
-    <head>
-        <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
-        <meta charset="UTF-8" />
-        <!-- Ensures responsive design for all devices (mobile-first design) -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Title of the webpage, displayed on the browser tab -->
-        <title>Account</title>
-        <!-- Link to Bootstrap CSS for styling and responsive utilities -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Link to custom styles for further customization -->
-        <link rel="stylesheet" href="css-main/navbar-footer.css" />
-        <style>
-            /* Placeholder for additional custom styles (inline CSS) */
-        </style>
-    </head>
-
-    <!-- Body Section -->
-    <body class="d-flex flex-column min-vh-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css-main/navbar-footer.css">
+    <style>
+        /* Placeholder for additional custom styles (inline CSS) */
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
     <!-- Navbar Section -->
     <header class="bg-primary py-3">
         <div class="container d-flex justify-content-between align-items-center">
@@ -84,94 +72,85 @@
             </nav>
         </div>
     </header>
+</body>
+    
 
+    
 
-        <main class="container-fluid flex-grow-1">
+    <!-- Contact Section -->
+    <main class="flex-grow-1">
+        <!-- Main content section that expands to fill available vertical space -->
+        <section class="container my-5">
+            <!-- Section with padding and spacing, contains the contact form and contact details -->
             <div class="row">
-                <div class="col-md-2 shadow">
-                    <!-- Sidebar -->
-                    <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
-                        <ul class="flex-column mb-auto p-0 py-2" style="font-size: 1.5rem; color: black">
-                            <!-- List of links to account pages -->
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="Profile.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-person-vcard display-5 mb-2" style="margin-right: 10px"></i>
-                                        Profile
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
-                                        My Items
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="#" class="icon-link nav-link active" aria-current="page">
-                                        <i class="bi bi-bookmark-heart display-6 mb-2" style="margin-right: 10px"></i>
-                                        Favorites
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="NewItem.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-plus-square display-6 mb-2" style="margin-right: 10px"></i>
-                                        List New Item
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="list" class="col-md-10 p-lg-5" style="padding-bottom: 200px">
-                    <!-- Items List, each row represents 1 item -->
-                    <!-- Rows are gonna be created using js. Rows below are samples -->
-                    <div class="text-start mb-2" style="font-size: large">Number of favorite items: <span id="numItems">0</span></div>
-                    <div class="row" style="display: none">
-                        <div class="card mb-2" style="max-height: 200px">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img
-                                        src="Chair.webp"
-                                        class="img-fluid rounded-start"
-                                        style="max-height: 200px; max-width: 200px"
-                                        alt="item" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title pt-3">Fancy Chair</h5>
-                                        <p class="card-text">Interiors</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 p-md-5">
-                                    <div class="row pb-lg-4"><a href="#" class="btn btn-primary">View</a></div>
-                                    <div class="row"><button name="remove" class="btn btn-danger">Remove</button></div>
-                                </div>
-                            </div>
+                <!-- Div for the Contact Form (Left Column) -->
+                <div class="col-md-6">
+                    <!-- Contact Form Card -->
+                    <form id="contactForm" class="card p-4 shadow">
+                        <!-- Form Title -->
+                        <h4>Send A Message</h4>
+                        
+                        <!-- Input for Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control">
                         </div>
+                        
+                        <!-- Input for Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control">
+                        </div>
+                        
+                        <!-- Input for Phone Number -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone No.</label>
+                            <input type="text" id="phone" class="form-control">
+                        </div>
+                        
+                        <!-- Input for Subject -->
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-control">
+                        </div>
+                        
+                        <!-- Textarea for Message -->
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+                
+                <!-- Div for the Contact Details (Right Column) -->
+                <div class="col-md-6">
+                    <!-- Contact Details Card -->
+                    <div class="card p-4 shadow">
+                        <!-- Title for Contact Details -->
+                        <h4>Contact Details</h4>
+                        
+                        <!-- Contact Information -->
+                        <p><strong>Phone:</strong> +966 (0) 55 1234567</p>
+                        <p><strong>Email:</strong> info@Jeek.com</p>
+                        <p><strong>Website:</strong> www.Jeek.com</p>
+                        
+                        <!-- Title for Additional Information -->
+                        <h4 class="mt-4">Our Timing</h4>
+                        
+                        <!-- Operating Hours -->
+                        <p>24/7</p>
                     </div>
-
-                    <!-- Pagination Navigation -->
-                    <nav aria-label="Items Navigation" id="paginationNav" style="display: none">
-                        <ul class="pagination justify-content-center mt-3">
-                            <li class="page-item disabled">
-                                <button class="page-link" tabindex="-1">Previous</button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link">Next</button>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
-        </main>
+        </section>
+    </main>
+    
 
-        <!-- Footer -->
+    
+<!-- Footer -->
 <footer class="mt-auto bg-light py-4">
     <!-- Container to structure the footer content -->
     <div class="container">
@@ -240,8 +219,8 @@
     </div>
 </footer>
 
-        <!-- Bootstrap JS for interactivity -->
-        <script src="general.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 

@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['role'] = $row['role'];  // You can use this to check the role if needed
 
             // Redirect to the logged-in page
-            header("Location: loggedHomePage.php");
+            header("Location: logged-HomePage.php");
             exit();
         } else {
             // Invalid password

@@ -1,29 +1,18 @@
-<?php
-// about.php
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <!-- Head Section: Contains metadata and external resource links -->
-    <head>
-        <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
-        <meta charset="UTF-8" />
-        <!-- Ensures responsive design for all devices (mobile-first design) -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Title of the webpage, displayed on the browser tab -->
-        <title>Account</title>
-        <!-- Link to Bootstrap CSS for styling and responsive utilities -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Link to custom styles for further customization -->
-        <link rel="stylesheet" href="css-main/navbar-footer.css" />
-        <style>
-            /* Placeholder for additional custom styles (inline CSS) */
-        </style>
-    </head>
-
-    <!-- Body Section -->
-    <body class="d-flex flex-column min-vh-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css-main/navbar-footer.css">
+    <link rel="stylesheet" href="css-main/jwe.css">
+    <style>
+        /* Placeholder for additional custom styles (inline CSS) */
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
     <!-- Navbar Section -->
     <header class="bg-primary py-3">
         <div class="container d-flex justify-content-between align-items-center">
@@ -84,94 +73,128 @@
             </nav>
         </div>
     </header>
+</body>
+
+    
 
 
-        <main class="container-fluid flex-grow-1">
-            <div class="row">
-                <div class="col-md-2 shadow">
-                    <!-- Sidebar -->
-                    <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
-                        <ul class="flex-column mb-auto p-0 py-2" style="font-size: 1.5rem; color: black">
-                            <!-- List of links to account pages -->
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="Profile.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-person-vcard display-5 mb-2" style="margin-right: 10px"></i>
-                                        Profile
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
-                                        My Items
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="#" class="icon-link nav-link active" aria-current="page">
-                                        <i class="bi bi-bookmark-heart display-6 mb-2" style="margin-right: 10px"></i>
-                                        Favorites
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="NewItem.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-plus-square display-6 mb-2" style="margin-right: 10px"></i>
-                                        List New Item
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="list" class="col-md-10 p-lg-5" style="padding-bottom: 200px">
-                    <!-- Items List, each row represents 1 item -->
-                    <!-- Rows are gonna be created using js. Rows below are samples -->
-                    <div class="text-start mb-2" style="font-size: large">Number of favorite items: <span id="numItems">0</span></div>
-                    <div class="row" style="display: none">
-                        <div class="card mb-2" style="max-height: 200px">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img
-                                        src="Chair.webp"
-                                        class="img-fluid rounded-start"
-                                        style="max-height: 200px; max-width: 200px"
-                                        alt="item" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title pt-3">Fancy Chair</h5>
-                                        <p class="card-text">Interiors</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 p-md-5">
-                                    <div class="row pb-lg-4"><a href="#" class="btn btn-primary">View</a></div>
-                                    <div class="row"><button name="remove" class="btn btn-danger">Remove</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <main class="flex-grow-1">
 
-                    <!-- Pagination Navigation -->
-                    <nav aria-label="Items Navigation" id="paginationNav" style="display: none">
-                        <ul class="pagination justify-content-center mt-3">
-                            <li class="page-item disabled">
-                                <button class="page-link" tabindex="-1">Previous</button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link">Next</button>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+           <!-- Categories section -->
+    <section class="container my-5">
+        <!-- Row to organize categories horizontally -->
+        <div class="row text-center">
+            <!-- Category: Art -->
+            <div class="col">
+                <!-- Link with an icon and label -->
+                <a href="logged-art.php" class="icon-link">
+                    <!-- Icon representing art -->
+                    <i class="bi bi-palette display-4 mb-2"></i>
+                    <p>Art</p>
+                </a>
             </div>
-        </main>
+            <!-- Category: Interiors -->
+            <div class="col">
+                <a href="logged-interiors.php" class="icon-link">
+                    <!-- Icon representing interiors -->
+                    <i class="bi bi-house-door display-4 mb-2"></i>
+                    <p>Interiors</p>
+                </a>
+            </div>
+            <!-- Category: Jewelry -->
+            <div class="col">
+                <a href="logged-jewelry.php" class="icon-link">
+                    <!-- Icon representing jewelry -->
+                    <i class="bi bi-gem display-4 mb-2"></i>
+                    <p>Jewelry</p>
+                </a>
+            </div>
+            <!-- Category: Watches -->
+            <div class="col">
+                <a href="logged-watches.php" class="icon-link">
+                    <!-- Icon representing watches -->
+                    <i class="bi bi-watch display-4 mb-2"></i>
+                    <p>Watches</p>
+                </a>
+            </div>
+            <!-- Category: Coins & Stamps -->
+            <div class="col">
+                <a href="logged-coins.php" class="icon-link">
+                    <!-- Icon representing coins and stamps -->
+                    <i class="bi bi-coin display-4 mb-2"></i>
+                    <p>Coins & Stamps</p>
+                </a>
+            </div>
+            <!-- Category: Books & History -->
+            <div class="col">
+                <a href="logged-bookss.php" class="icon-link">
+                    <!-- Icon representing books and history -->
+                    <i class="bi bi-book display-4 mb-2"></i>
+                    <p>Books & History</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Footer -->
+    <h1 class="text-center mb-4">Jewelry</h1>
+    <div class="row g-4">
+
+        <div class="grid">
+            <div class="card">
+              <div class="image"><img src="imgs/jwe1.jfif" alt="" height="150px" width="150px"></div>
+              <p>Abdullah</p>
+              <button>View</button>
+            </div>
+            <!-- Repeat this card as needed -->
+            <div class="card">
+              <div class="image"><img src="imgs/jwe2.jfif" alt="" height="150px" width="150px"></div>
+              <p>Ameen</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/jwe3.jfif" alt="" height="150px" width="150px"></div>
+              <p>Omar</p>
+              <button>View</button>
+            </div>
+      
+            <div class="card">
+              <div class="image"><img src="imgs/jwe4.jfif" alt="" height="150px" width="150px"></div>
+              <p>Saad</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/jwe6.jfif" alt="" height="150px" width="150px"></div>
+              <p>Fahad</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/jwe7.jfif" alt="" height="150px" width="150px"></div>
+              <p>Yassen</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/jwe5.jfif" alt="" height="150px" width="150px"></div>
+              <p>Gomaiz</p>
+              <button>View</button>
+            </div>
+            <div class="card">
+              <div class="image"><img src="imgs/jwe8.jfif" alt="" height="150px" width="150px"></div>
+              <p>Ronaldo</p>
+              <button>View</button>
+            </div>
+      
+            <!-- Add more cards here -->
+          </div>
+          <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+          </div>
+    </main>
+    
+
+    
+<!-- Footer -->
 <footer class="mt-auto bg-light py-4">
     <!-- Container to structure the footer content -->
     <div class="container">
@@ -240,8 +263,7 @@
     </div>
 </footer>
 
-        <!-- Bootstrap JS for interactivity -->
-        <script src="general.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+ 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 

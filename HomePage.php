@@ -145,7 +145,6 @@
                 <!-- Informational text -->
                 <p class="mb-4">
                     Enter your username and email address and press the SEND button to request a new password. 
-                    You will receive an email with your new password within five minutes.
                 </p>
 
                 <!-- Forgot Password form -->
@@ -479,11 +478,10 @@
                 <h5>Quick Links</h5>
                 <ul class="list-unstyled">
                     <!-- List of links to key pages -->
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="HomePage.php">Home</a></li>
+                    <li><a href="Categories.php">Categories</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
             </div>
             
@@ -492,12 +490,12 @@
                 <h5>Categories</h5>
                 <ul class="list-unstyled">
                     <!-- Links to categories offered on the website -->
-                    <li><a href="#">Art</a></li>
-                    <li><a href="#">Interiors</a></li>
-                    <li><a href="#">Jewelry</a></li>
-                    <li><a href="#">Watches</a></li>
-                    <li><a href="#">Coins & Stamps</a></li>
-                    <li><a href="#">Books & History</a></li>
+                    <li><a href="art.php">Art</a></li>
+                    <li><a href="interiors.php">Interiors</a></li>
+                    <li><a href="jewelry.php">Jewelry</a></li>
+                    <li><a href="watches.php">Watches</a></li>
+                    <li><a href="coins.php">Coins & Stamps</a></li>
+                    <li><a href="bookss.php">Books & History</a></li>
                 </ul>
             </div>
             
@@ -509,9 +507,9 @@
                     <li><i class="bi bi-telephone me-2"></i>+966 (0) 55 1234567</li>
                     <li><i class="bi bi-telephone-fill me-2"></i>+966 (0) 0 1234567</li>
                     <!-- Email address with clickable link -->
-                    <li><i class="bi bi-envelope me-2"></i><a href="mailto:info@storename.com" class="text-dark text-decoration-none">info@Jeek.com</a></li>
+                    <li><i class="bi bi-envelope me-2"></i><a href="mailto:info@jeek.com" class="text-dark text-decoration-none">info@Jeek.com</a></li>
                     <!-- Website URL with clickable link -->
-                    <li><i class="bi bi-globe me-2"></i><a href="https://www.storename.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a></li>
+                    <li><i class="bi bi-globe me-2"></i><a href="https://www.jeek.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a></li>
                 </ul>
                 
                 <!-- Social Media Icons Section -->
@@ -532,6 +530,7 @@
         </div>
     </div>
 </footer>
+
 
 
 <!-- Bootstrap JS -->

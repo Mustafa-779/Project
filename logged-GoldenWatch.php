@@ -1,29 +1,18 @@
-<?php
-// about.php
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <!-- Head Section: Contains metadata and external resource links -->
-    <head>
-        <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
-        <meta charset="UTF-8" />
-        <!-- Ensures responsive design for all devices (mobile-first design) -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Title of the webpage, displayed on the browser tab -->
-        <title>Account</title>
-        <!-- Link to Bootstrap CSS for styling and responsive utilities -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Link to custom styles for further customization -->
-        <link rel="stylesheet" href="css-main/navbar-footer.css" />
-        <style>
-            /* Placeholder for additional custom styles (inline CSS) */
-        </style>
-    </head>
-
-    <!-- Body Section -->
-    <body class="d-flex flex-column min-vh-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css-main/navbar-footer.css">
+    <link rel="stylesheet" href="css-main/cards.css">
+    <style>
+        /* Placeholder for additional custom styles (inline CSS) */
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
     <!-- Navbar Section -->
     <header class="bg-primary py-3">
         <div class="container d-flex justify-content-between align-items-center">
@@ -84,94 +73,104 @@
             </nav>
         </div>
     </header>
+</body>
 
+    
 
-        <main class="container-fluid flex-grow-1">
-            <div class="row">
-                <div class="col-md-2 shadow">
-                    <!-- Sidebar -->
-                    <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
-                        <ul class="flex-column mb-auto p-0 py-2" style="font-size: 1.5rem; color: black">
-                            <!-- List of links to account pages -->
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="Profile.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-person-vcard display-5 mb-2" style="margin-right: 10px"></i>
-                                        Profile
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
-                                        My Items
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="#" class="icon-link nav-link active" aria-current="page">
-                                        <i class="bi bi-bookmark-heart display-6 mb-2" style="margin-right: 10px"></i>
-                                        Favorites
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="NewItem.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-plus-square display-6 mb-2" style="margin-right: 10px"></i>
-                                        List New Item
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+    <main class="flex-grow-1 my-5">
+
+        
+        <div class="container">
+            <!-- Item Section -->
+            <section class="row align-items-center">
+                <!-- Left Side: Image and Item Name -->
+                <div class="col-md-6 text-center">
+                    <h2 class="mb-4 fw-bold text-primary">3 Eyes Gold Geneva Casual Quartz Watch</h2>
+                    <p class="fs-4 text-danger fw-bold m-0">
+                        <i class="bi bi-tag-fill me-2"></i>$1177
+                    </p>
+                    <img src="imgs/Goldwatch.jpg" alt="Item Image" class="img-fluid rounded shadow">
                 </div>
-                <div id="list" class="col-md-10 p-lg-5" style="padding-bottom: 200px">
-                    <!-- Items List, each row represents 1 item -->
-                    <!-- Rows are gonna be created using js. Rows below are samples -->
-                    <div class="text-start mb-2" style="font-size: large">Number of favorite items: <span id="numItems">0</span></div>
-                    <div class="row" style="display: none">
-                        <div class="card mb-2" style="max-height: 200px">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img
-                                        src="Chair.webp"
-                                        class="img-fluid rounded-start"
-                                        style="max-height: 200px; max-width: 200px"
-                                        alt="item" />
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title pt-3">Fancy Chair</h5>
-                                        <p class="card-text">Interiors</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 p-md-5">
-                                    <div class="row pb-lg-4"><a href="#" class="btn btn-primary">View</a></div>
-                                    <div class="row"><button name="remove" class="btn btn-danger">Remove</button></div>
-                                </div>
-                            </div>
+    
+                <!-- Right Side: Description and Details -->
+                <div class="col-md-6">
+                    <!-- Description Section -->
+                    <div class="mb-4">
+                        <h4 class="fw-bold text-secondary">Description</h4>
+                        <p class="text-muted">
+                            This luxurious gold watch is crafted with precision and style. Its timeless design complements any outfit, making it a perfect accessory for any occasion. Experience unmatched elegance and functionality.
+                        </p>
+                    </div>
+    
+                    <!-- Rating Section -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold text-secondary">Rating</h5>
+                        <div class="d-flex align-items-center">
+                            <span class="text-warning fs-4 me-2">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </span>
+                            <span class="text-muted">(4.5/5)</span>
                         </div>
                     </div>
-
-                    <!-- Pagination Navigation -->
-                    <nav aria-label="Items Navigation" id="paginationNav" style="display: none">
-                        <ul class="pagination justify-content-center mt-3">
-                            <li class="page-item disabled">
-                                <button class="page-link" tabindex="-1">Previous</button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link">Next</button>
-                            </li>
+    
+                    <!-- Additional Details -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold text-secondary">Features</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Water-resistant</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>High-precision quartz movement</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Scratch-resistant</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Two-year warranty</li>
                         </ul>
-                    </nav>
-                </div>
-            </div>
-        </main>
+                    </div>
+    
+                    <!-- Buttons -->
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-outline-primary btn-lg w-50">
+                            <i class="bi bi-heart-fill me-2"></i>Add to Favorites
+                        </button>
+                        <button class="btn btn-outline-danger btn-lg w-50">
+                            <i class="bi bi-flag-fill me-2"></i>Report
+                        </button>
+                    </div>
 
-        <!-- Footer -->
+                    
+                </div>
+            </section>
+        </div>
+    </main>
+    
+
+<!-- Contact the Owner -->
+<div class="contact-owner-section p-4 mb-4">
+    <h4 class="fw-bold text-primary mb-4"><i class="bi bi-person-circle me-2"></i>Contact the Owner</h4>
+    <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-person-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Name:</strong> Ahmed Mohammed</p>
+    </div>
+    <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-envelope-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:Ahmed@gmail.com" class="text-decoration-none text-primary">Ahmed@gmail.com</a></p>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-telephone-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Phone No.:</strong> +966 (0) 55 1234567</p>
+    </div>
+</div>
+
+
+
+
+        </section>
+    </div>
+</main>
+
+    
+<!-- Footer -->
 <footer class="mt-auto bg-light py-4">
     <!-- Container to structure the footer content -->
     <div class="container">
@@ -240,8 +239,7 @@
     </div>
 </footer>
 
-        <!-- Bootstrap JS for interactivity -->
-        <script src="general.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,3 +1,12 @@
+<?php
+// Include the database connection
+require_once 'jeek_DB.php';
+
+// Fetch products from the database
+$sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; // Adjust the query as needed (LIMIT 6 for the first 6 items)
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
@@ -366,57 +375,41 @@
     <h1 class="text-center mb-4">Art</h1>
     <div class="row g-4">
 
-        <div class="grid">
-            <div class="card">
-              <div class="image"><img src="imgs/art1.jfif" alt="" height="150px" width="150px"></div>
-              <p>Abdullah</p>
-              <button>View</button>
+    <?php
+    // Fetch products from the database where catagory_id is 1
+    $sql = "SELECT * FROM Products WHERE status = 'available' AND categorie_id = 1"; 
+    $result = $conn->query($sql);
+
+    // Loop through products and display them in cards
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $product_id = $row['product_id']; // Assuming the primary key is product_id
+            $name = $row['name'];
+            $description = $row['description'];
+            $price = $row['price'];
+            $image = $row['image'];
+
+            // Link to the product details page with the product ID
+            echo "
+            <div class='col-md-4'>
+                <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                    <div class='card-img-overlay text-end p-2'>
+                        <span class='badge bg-primary fs-6'>$$price</span>
+                    </div>
+                    <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
+                    <div class='card-body text-center'>
+                        <h5 class='card-title fw-bold text-primary'>$name</h5>
+                        <p class='card-text text-muted'>$description</p>
+                    </div>
+                </a>
             </div>
-            <!-- Repeat this card as needed -->
-            <div class="card">
-              <div class="image"><img src="imgs/art2.jfif" alt="" height="150px" width="150px"></div>
-              <p>Ameen</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/art3.jfif" alt="" height="150px" width="150px"></div>
-              <p>Omar</p>
-              <button>View</button>
-            </div>
-      
-            <div class="card">
-              <div class="image"><img src="imgs/art4.jfif" alt="" height="150px" width="150px"></div>
-              <p>Saad</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/art5.jfif" alt="" height="150px" width="150px"></div>
-              <p>Fahad</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/art6.jfif" alt="" height="150px" width="150px"></div>
-              <p>Yassen</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/art7.jfif" alt="" height="150px" width="150px"></div>
-              <p>Gomaiz</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/art8.jfif" alt="" height="150px" width="150px"></div>
-              <p>Ronaldo</p>
-              <button>View</button>
-            </div>
-      
-            <!-- Add more cards here -->
-          </div>
-          <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-          </div>
+            ";
+        }
+    } else {
+        echo "<p>No products available at the moment.</p>";
+    }
+?>
+
     </main>
     
 

@@ -1,3 +1,12 @@
+<?php
+// Include the database connection
+require_once 'jeek_DB.php';
+
+// Fetch products from the database
+$sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; // Adjust the query as needed (LIMIT 6 for the first 6 items)
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
@@ -16,7 +25,7 @@
         <!-- Styles for Navbar and Footer -->
         <link rel="stylesheet" href="css-main/navbar-footer.css">
         <!-- Styles for Cards -->
-        <link rel="stylesheet" href="css-main/watches.css">
+        <link rel="stylesheet" href="css-main/art.css">
         <style>
             /* Placeholder for additional custom styles (inline CSS) */
         </style>
@@ -300,22 +309,24 @@
         </div>
     </div>
 </div>
+
     
 
 
     <main class="flex-grow-1">
 
-        <!-- Categories section -->
+
+       <!-- Categories section -->
     <section class="container my-5">
         <!-- Row to organize categories horizontally -->
         <div class="row text-center">
             <!-- Category: Art -->
             <div class="col">
                 <!-- Link with an icon and label -->
-                <a href="art.php" class="icon-link">
+                <a href="art.php" class="icon-link text-primary">
                     <!-- Icon representing art -->
                     <i class="bi bi-palette display-4 mb-2"></i>
-                    <p>Art</p>
+                    <p class="fw-bold">Art</p>
                 </a>
             </div>
             <!-- Category: Interiors -->
@@ -336,10 +347,10 @@
             </div>
             <!-- Category: Watches -->
             <div class="col">
-                <a href="watches.php" class="icon-link text-primary">
+                <a href="watches.php" class="icon-link">
                     <!-- Icon representing watches -->
                     <i class="bi bi-watch display-4 mb-2"></i>
-                    <p class="fw-bold">Watches</p>
+                    <p>Watches</p>
                 </a>
             </div>
             <!-- Category: Coins & Stamps -->
@@ -364,57 +375,41 @@
     <h1 class="text-center mb-4">Watches</h1>
     <div class="row g-4">
 
-        <div class="grid">
-            <div class="card">
-              <div class="image"><img src="imgs/wat1.jfif" alt="" height="150px" width="150px"></div>
-              <p>Abdullah</p>
-              <button>View</button>
+    <?php
+    // Fetch products from the database where catagory_id is 1
+    $sql = "SELECT * FROM Products WHERE status = 'available' AND categorie_id = 4"; 
+    $result = $conn->query($sql);
+
+    // Loop through products and display them in cards
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $product_id = $row['product_id']; // Assuming the primary key is product_id
+            $name = $row['name'];
+            $description = $row['description'];
+            $price = $row['price'];
+            $image = $row['image'];
+
+            // Link to the product details page with the product ID
+            echo "
+            <div class='col-md-4'>
+                <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                    <div class='card-img-overlay text-end p-2'>
+                        <span class='badge bg-primary fs-6'>$$price</span>
+                    </div>
+                    <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
+                    <div class='card-body text-center'>
+                        <h5 class='card-title fw-bold text-primary'>$name</h5>
+                        <p class='card-text text-muted'>$description</p>
+                    </div>
+                </a>
             </div>
-            <!-- Repeat this card as needed -->
-            <div class="card">
-              <div class="image"><img src="imgs/wat2.jbg.jfif" alt="" height="150px" width="150px"></div>
-              <p>Ameen</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/wat3.jfif" alt="" height="150px" width="150px"></div>
-              <p>Omar</p>
-              <button>View</button>
-            </div>
-      
-            <div class="card">
-              <div class="image"><img src="imgs/wat4.jfif" alt="" height="150px" width="150px"></div>
-              <p>Saad</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/wat5.jfif" alt="" height="150px" width="150px"></div>
-              <p>Fahad</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/wat6.jfif" alt="" height="150px" width="150px"></div>
-              <p>Yassen</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/wat 7.jfif" alt="" height="150px" width="150px"></div>
-              <p>Gomaiz</p>
-              <button>View</button>
-            </div>
-            <div class="card">
-              <div class="image"><img src="imgs/wat8.jfif" alt="" height="150px" width="150px"></div>
-              <p>Ronaldo</p>
-              <button>View</button>
-            </div>
-      
-            <!-- Add more cards here -->
-          </div>
-          <div class="pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-          </div>
+            ";
+        }
+    } else {
+        echo "<p>No products available at the moment.</p>";
+    }
+?>
+
     </main>
     
 
@@ -484,6 +479,5 @@
 
 
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

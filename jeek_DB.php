@@ -127,6 +127,6 @@ if ($conn->query($sql_reviews) === TRUE) {
     echo "Error creating Reviews table: " . $conn->error . "<br>";
 }
 
-// Close the connection
-$conn->close();
+
+
 ?>

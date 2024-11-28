@@ -1,3 +1,13 @@
+
+<?php
+// Include the database connection
+require_once 'jeek_DB.php';
+
+// Fetch products from the database
+$sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; // Adjust the query as needed (LIMIT 6 for the first 6 items)
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
@@ -377,90 +387,40 @@
 <section class="container mb-5">
     <h2 class="mb-4 text-center text-primary">Popular Items</h2>
     <div class="row g-4">
-        <!-- Card for Jewelry -->
-        <div class="col-md-4">
-            <a href="#" class="card shadow-lg border-0 hover-effect text-decoration-none">
-                <div class="card-img-overlay text-end p-2">
-                    <span class="badge bg-success fs-6">$163</span>
-                </div>
-                <img src="imgs/ring2.webp" class="card-img-top rounded-top" alt="Jewelry - Ring">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-primary">Jewelry</h5>
-                    <p class="card-text text-muted">Become elegant for every occasion.</p>
-                </div>
-            </a>
-        </div>
+        <?php
+        // Fetch products from the database
+        $sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; 
+        $result = $conn->query($sql);
 
-        <!-- Card for Books -->
-        <div class="col-md-4">
-            <a href="#" class="card shadow-lg border-0 hover-effect text-decoration-none">
-                <div class="card-img-overlay text-end p-2">
-                    <span class="badge bg-warning fs-6">$27</span>
-                </div>
-                <img src="imgs/verynewbook.webp" class="card-img-top rounded-top" alt="Books - History">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-primary">Books & History</h5>
-                    <p class="card-text text-muted">Uncover new tricks, one page at a time.</p>
-                </div>
-            </a>
-        </div>
+        // Loop through products and display them in cards
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $product_id = $row['product_id']; // Assuming the primary key is product_id
+                $name = $row['name'];
+                $description = $row['description'];
+                $price = $row['price'];
+                $image = $row['image'];
 
-        <!-- Card for Interiors -->
-        <div class="col-md-4">
-            <a href="#" class="card shadow-lg border-0 hover-effect text-decoration-none">
-                <div class="card-img-overlay text-end p-2">
-                    <span class="badge bg-danger fs-6">$300</span>
+                // Link to the product details page with the product ID
+                echo "
+                <div class='col-md-4'>
+                    <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                        <div class='card-img-overlay text-end p-2'>
+                            <span class='badge bg-primary fs-6'>$$price</span>
+                        </div>
+                        <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
+                        <div class='card-body text-center'>
+                            <h5 class='card-title fw-bold text-primary'>$name</h5>
+                            <p class='card-text text-muted'>$description</p>
+                        </div>
+                    </a>
                 </div>
-                <img src="imgs/Chair.webp" class="card-img-top rounded-top" alt="Interiors - Chair">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-primary">Interiors</h5>
-                    <p class="card-text text-muted">Transform your living space with style.</p>
-                </div>
-            </a>
-        </div>
-
-        <!-- Card for Art -->
-        <div class="col-md-4">
-            <a href="#" class="card shadow-lg border-0 hover-effect text-decoration-none">
-                <div class="card-img-overlay text-end p-2">
-                    <span class="badge bg-primary fs-6">$110</span>
-                </div>
-                <img src="imgs/art3.webp" class="card-img-top rounded-top" alt="Art - Painting">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-primary">Art</h5>
-                    <p class="card-text text-muted">Masterpiece for collectors.</p>
-                </div>
-            </a>
-        </div>
-
-        <!-- Card for Coins -->
-        <div class="col-md-4">
-            <a href="#" class="card shadow-lg border-0 hover-effect text-decoration-none">
-                <div class="card-img-overlay text-end p-2">
-                    <span class="badge bg-secondary fs-6">$80</span>
-                </div>
-                <img src="imgs/coin3.jpg" class="card-img-top rounded-top" alt="Coins - Stamps">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-primary">Coins & Stamps</h5>
-                    <p class="card-text text-muted">Victorian treasures await.</p>
-                </div>
-            </a>
-        </div>
-
-           <!-- Card for Watches -->
-<div class="col-md-4">
-    <a href="GoldenWatch.php" class="card shadow-lg border-0 hover-effect text-decoration-none">
-        <div class="card-img-overlay text-end p-2">
-            <span class="badge bg-info fs-6">$1177</span>
-        </div>
-        <img src="imgs/Goldwatch.jpg" class="card-img-top rounded-top" alt="Watches - Classic">
-        <div class="card-body text-center">
-            <h5 class="card-title fw-bold text-primary">Watches</h5>
-            <p class="card-text text-muted">Timeless piece for your wrist.</p>
-        </div>
-    </a>
-</div>
-
+                ";
+            }
+        } else {
+            echo "<p>No products available at the moment.</p>";
+        }
+        ?>
     </div>
 </section>
 

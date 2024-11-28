@@ -1,6 +1,50 @@
 <?php
-// about.php
+// Include the database connection
+require_once 'jeek_DB.php';
+
+session_start(); // Start the session to retrieve user data if needed
+
+// Initialize variables for error/success messages
+$message = "";
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve form data
+    $name = $_POST['name'];
+    $category = $_POST['category'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+    $image = $_FILES['image']['name']; // Uploaded file name
+
+    // Handle file upload
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($image);
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+        // Fetch category ID based on the selected category name
+        $categoryQuery = $conn->prepare("SELECT categorie_id FROM Categories WHERE name = ?");
+        $categoryQuery->bind_param("s", $category);
+        $categoryQuery->execute();
+        $categoryResult = $categoryQuery->get_result();
+        $category_id = $categoryResult->fetch_assoc()['categorie_id'];
+
+        // Insert the new item into the Products table
+        $sql = $conn->prepare("INSERT INTO Products (categorie_id, name, price, description, image, quantity, status) 
+                                VALUES (?, ?, ?, ?, ?, ?, 'available')");
+        $sql->bind_param("isdssi", $category_id, $name, $price, $description, $image, $quantity);
+
+        if ($sql->execute()) {
+            $message = "Item added successfully!";
+        } else {
+            $message = "Error adding item: " . $conn->error;
+        }
+    } else {
+        $message = "Error uploading the image.";
+    }
+}
 ?>
+
 <!doctype html>
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
@@ -51,7 +95,7 @@
                 </ul>
 
                 <?php
-                session_start();
+                
                 if (isset($_SESSION['username'])):
                 ?>
                     <!-- Dropdown menu for logged-in user -->
@@ -86,105 +130,53 @@
     </header>
 
 
-        <main class="container-fluid flex-grow-1">
-            <div class="row">
-                <div class="col-md-2 shadow">
-                    <!-- Sidebar -->
-                    <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
-                        <ul class="flex-column mb-auto p-0 py-2" style="font-size: 1.5rem; color: black">
-                            <!-- List of links to account pages -->
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="Profile.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-person-vcard display-5 mb-2" style="margin-right: 10px"></i>
-                                        Profile
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
-                                        My Items
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="Favorites.php" class="icon-link nav-link" aria-current="page">
-                                        <i class="bi bi-bookmark-heart display-6 mb-2" style="margin-right: 10px"></i>
-                                        Favorites
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="row">
-                                    <a href="#" class="icon-link nav-link active" aria-current="page">
-                                        <i class="bi bi-plus-square display-6 mb-2" style="margin-right: 10px"></i>
-                                        List New Item
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <form id="newItem" style="padding: 50px 200px">
-                        <h4 style="text-align: center">Upload New Item for Sale</h4>
-                        <div class="mb-3 mt-3" style="display: flex; flex-direction: column; align-items: center">
-                            <img
-                                id="imagePreview"
-                                src="insertImage.png"
-                                alt="Image Preview"
-                                style="max-width: 250px; max-height: 250px; display: block" />
-                            <input
-                                type="file"
-                                id="fileUpload"
-                                accept="image/*"
-                                style="margin-top: 10px; width: 200px; margin: 0 auto" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">*Item Name</label>
-                            <input type="text" id="name" class="form-control" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">*Category</label>
-                            <select class="form-select" aria-label="Category" required>
-                                <option value="" selected disabled>Select category</option>
-                                <option value="Art">Art</option>
-                                <option value="Interiors">Interiors</option>
-                                <option value="Jewelry">Jewelry</option>
-                                <option value="Watches">Watches</option>
-                                <option value="Coins & Stamps">Coins & Stamps</option>
-                                <option value="Books & History">Books & History</option>
-                            </select>
-                        </div>
-                        <div class="mb-5">
-                            <label for="description" class="form-label">*Description</label>
-                            <textarea id="description" class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="text-danger text-center">
-                            <p>
-                                *Note: Request needs to get verification by our team before it gets published. This will
-                                take few work days.
-                            </p>
-
-                            <button
-                                type="submit"
-                                class="btn btn-warning w-40"
-                                data-bs-toggle="modal"
-                                data-bs-target="#previewModal">
-                                Preview
-                            </button>
-                            <button type="submit" class="btn btn-success w-70" style="margin: auto 20px">
-                                Upload for Sale
-                            </button>
-                            <button type="submit" class="btn btn-secondary w-40" onclick="clearForm()">Cancel</button>
-                        </div>
-                    </form>
-                </div>
+    <main class="container my-5">
+        <?php if ($message): ?>
+            <div class="alert alert-info">
+                <?php echo $message; ?>
             </div>
-        </main>
+        <?php endif; ?>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">*Item Name</label>
+                <input type="text" name="name" id="name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">*Category</label>
+                <select name="category" id="category" class="form-select" required>
+                    <option value="" selected disabled>Select category</option>
+                    <option value="Art">Art</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Books & History">Books & History</option>
+                    <option value="Coins & Stamps">Coins & Stamps</option>
+                    <option value="Interiors">Interiors</option>
+                    <option value="Watches">Watches</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">*Price</label>
+                <input type="number" name="price" id="price" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">*Quantity</label>
+                <input type="number" name="quantity" id="quantity" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">*Description</label>
+                <textarea name="description" id="description" class="form-control" rows="6" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">*Image</label>
+                <input type="file" name="image" id="image" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Submit Item</button>
+            </div>
+        </form>
+    </main>
+
         
         <!-- Footer -->
 <footer class="mt-auto bg-light py-4">

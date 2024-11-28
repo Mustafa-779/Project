@@ -1,3 +1,40 @@
+<?php
+// Include the database connection
+require_once 'jeek_DB.php';
+
+// Check if product ID is passed in the URL
+if (isset($_GET['id'])) {
+    $product_id = $_GET['id'];
+
+    // Fetch product details from the database based on the product ID
+    $sql = "SELECT * FROM Products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if the product exists
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+        $name = $product['name'];
+        $description = $product['description'];
+        $price = $product['price'];
+        $image = $product['image'];
+        $rating = $product['rating'];  // Assuming the product has a rating
+    } else {
+        // Redirect to home page if the product is not found
+        header("Location: home.php");
+        exit;
+    }
+} else {
+    // Redirect to home page if no product ID is provided
+    header("Location: home.php");
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Head Section: Contains metadata and external resource links -->
@@ -301,75 +338,66 @@
     </div>
 </div>
 
-    <main class="flex-grow-1 my-5">
+<main class="flex-grow-1 my-5">
+    <div class="container">
+        <!-- Item Section -->
+        <section class="row align-items-center">
+            <!-- Left Side: Image and Item Name -->
+            <div class="col-md-6 text-center">
+                <h2 class="mb-4 fw-bold text-primary"><?php echo $name; ?></h2>
+                <p class="fs-4 text-danger fw-bold m-0">
+                    <i class="bi bi-tag-fill me-2"></i>$<?php echo $price; ?>
+                </p>
+                <img src="uploads/<?php echo $image; ?>" alt="Item Image" class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Right Side: Description and Details -->
+            <div class="col-md-6">
+                <!-- Description Section -->
+                <div class="mb-4">
+                    <h4 class="fw-bold text-secondary">Description</h4>
+                    <p class="text-muted"><?php echo $description; ?></p>
+                </div>
+
+                <!-- Rating Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold text-secondary">Rating</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="text-warning fs-4 me-2">
+                            <?php
+                            // Display stars based on rating (simple 5-star display)
+                            for ($i = 0; $i < 5; $i++) {
+                                if ($i < floor($rating)) {
+                                    echo "<i class='bi bi-star-fill'></i>";
+                                } elseif ($i == floor($rating) && $rating - floor($rating) >= 0.5) {
+                                    echo "<i class='bi bi-star-half'></i>";
+                                } else {
+                                    echo "<i class='bi bi-star'></i>";
+                                }
+                            }
+                            ?>
+                        </span>
+                        <span class="text-muted">(<?php echo $rating; ?>/5)</span>
+                    </div>
+                </div>
 
         
-        <div class="container">
-            <!-- Item Section -->
-            <section class="row align-items-center">
-                <!-- Left Side: Image and Item Name -->
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-4 fw-bold text-primary">3 Eyes Gold Geneva Casual Quartz Watch</h2>
-                    <p class="fs-4 text-danger fw-bold m-0">
-                        <i class="bi bi-tag-fill me-2"></i>$1177
-                    </p>
-                    <img src="imgs/Goldwatch.jpg" alt="Item Image" class="img-fluid rounded shadow">
-                </div>
-    
-                <!-- Right Side: Description and Details -->
-                <div class="col-md-6">
-                    <!-- Description Section -->
-                    <div class="mb-4">
-                        <h4 class="fw-bold text-secondary">Description</h4>
-                        <p class="text-muted">
-                            This luxurious gold watch is crafted with precision and style. Its timeless design complements any outfit, making it a perfect accessory for any occasion. Experience unmatched elegance and functionality.
-                        </p>
-                    </div>
-    
-                    <!-- Rating Section -->
-                    <div class="mb-4">
-                        <h5 class="fw-bold text-secondary">Rating</h5>
-                        <div class="d-flex align-items-center">
-                            <span class="text-warning fs-4 me-2">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </span>
-                            <span class="text-muted">(4.5/5)</span>
-                        </div>
-                    </div>
-    
-                    <!-- Additional Details -->
-                    <div class="mb-4">
-                        <h5 class="fw-bold text-secondary">Features</h5>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Water-resistant</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>High-precision quartz movement</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Scratch-resistant</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Two-year warranty</li>
-                        </ul>
-                    </div>
-    
-                    <!-- Buttons -->
-                    <div class="d-flex gap-3">
-                        <button class="btn btn-outline-primary btn-lg w-50">
-                            <i class="bi bi-heart-fill me-2"></i>Add to Favorites
-                        </button>
-                        <button class="btn btn-outline-danger btn-lg w-50">
-                            <i class="bi bi-flag-fill me-2"></i>Report
-                        </button>
-                    </div>
 
-                    
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3">
+                    <button class="btn btn-outline-primary btn-lg w-50">
+                        <i class="bi bi-heart-fill me-2"></i>Add to Favorites
+                    </button>
+                    <button class="btn btn-outline-danger btn-lg w-50">
+                        <i class="bi bi-flag-fill me-2"></i>Report
+                    </button>
                 </div>
-            </section>
-        </div>
-    </main>
-    
+            </div>
+        </section>
+    </div>
+</main>
 
-<!-- Contact the Owner -->
+<!-- Contact the Owner Section -->
 <div class="contact-owner-section p-4 mb-4">
     <h4 class="fw-bold text-primary mb-4"><i class="bi bi-person-circle me-2"></i>Contact the Owner</h4>
     <div class="d-flex align-items-center mb-3">

@@ -22,6 +22,8 @@ $result = $conn->query($sql);
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <script src="js-main/forgot_password.js"></script>
+
         
         <!-- Styles for Navbar and Footer -->
         <link rel="stylesheet" href="css-main/navbar-footer.css">
@@ -136,65 +138,74 @@ $result = $conn->query($sql);
 </div>
 
 
-<!-- Forgot Password Modal -->
+<!-- Step 1: Enter Username -->
 <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-    <!-- Modal dialog container -->
     <div class="modal-dialog">
-        <!-- Modal content: Includes header, body, and footer -->
         <div class="modal-content">
-            <!-- Modal header -->
             <div class="modal-header">
-                <!-- Title for the modal -->
                 <h5 class="modal-title" id="forgotPasswordModalLabel">Reset your password</h5>
-                <!-- Close button to dismiss the modal -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
-            <!-- Modal body -->
             <div class="modal-body">
-                <!-- Informational text -->
-                <p class="mb-4">
-                    Enter your username and email address and press the SEND button to request a new password. 
-                </p>
-
-                <!-- Forgot Password form -->
-                <form>
-                    <!-- Username input field -->
+                <form id="usernameForm">
+                    <p class="mb-3">Enter your username to fetch the security question.</p>
                     <div class="mb-3">
-                        <!-- Label for username -->
                         <label for="forgotPasswordUsername" class="form-label">Username</label>
-                        <!-- Input group to combine an icon and input field -->
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                            <input type="text" class="form-control" id="forgotPasswordUsername" name="username" placeholder="Enter your username" required>
-                        </div>
+                        <input type="text" class="form-control" id="forgotPasswordUsername" name="username" placeholder="Enter your username" required>
                     </div>
-
-                    <!-- Email input field -->
-                    <div class="mb-3">
-                        <!-- Label for email -->
-                        <label for="forgotPasswordEmail" class="form-label">Email</label>
-                        <!-- Input group for email with an icon -->
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                            <input type="email" class="form-control" id="forgotPasswordEmail" name="email" placeholder="Enter your email address" required>
-                        </div>
-                    </div>
-
-                    <!-- Submit button -->
                     <div class="d-grid">
-                        <!-- Button spans the full width of its container -->
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="submit" class="btn btn-primary">Next</button>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer text-center">
-                <!-- Link to navigate back to the login modal -->
-                <p class="mb-0 w-100">
-                    <a href="#" class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signInModal">Back to Login</a>
-                </p>
+<!-- Step 2: Answer Security Question -->
+<div class="modal fade" id="securityQuestionModal" tabindex="-1" aria-labelledby="securityQuestionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="securityQuestionModalLabel">Answer Security Question</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="securityQuestionForm">
+                    <p id="securityQuestionText" class="mb-3"></p>
+                    <div class="mb-3">
+                        <label for="securityAnswerInput" class="form-label">Answer</label>
+                        <input type="text" class="form-control" id="securityAnswerInput" name="security_answer" placeholder="Enter your answer" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Step 3: Enter New Password -->
+<div class="modal fade" id="newPasswordModal" tabindex="-1" aria-labelledby="newPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newPasswordModalLabel">Set New Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="newPasswordForm">
+                    <p class="mb-4">Enter a new password for your account.</p>
+                    <!-- New password input field -->
+                    <div class="mb-3">
+                        <label for="newPasswordInput" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="newPasswordInput" name="new_password" placeholder="Enter your new password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Reset Password</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

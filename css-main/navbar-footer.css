@@ -9,6 +9,7 @@ body {
     min-height: 100vh; /* Full viewport height for proper layout. */
     margin: 0; /* Removes default margin. */
     font-family: Arial, sans-serif; /* Adds a clean font family. */
+    overflow-x: hidden; /* Prevents horizontal scrolling. */
 }
 
 /* 
@@ -27,6 +28,7 @@ header img {
     object-fit: contain; /* Maintains the logo's aspect ratio without cropping. */
     padding: 5px; /* Adds spacing around the logo for visual balance. */
     border-radius: 5px; /* Adds subtle rounding to logo corners. */
+    width: auto; /* Ensures proportional scaling of the image. */
 }
 
 .header-message {
@@ -47,7 +49,6 @@ header img {
     background-color: rgba(255, 255, 255, 0.2); /* Adds a subtle translucent background on hover. */
     color: #ffc107; /* Changes text color to yellow on hover. */
     border-radius: 5px; /* Rounds corners of hover effect. */
-    text-decoration: none; /* Adds underlining to emphasize interactivity. */
 }
 
 @media (max-width: 768px) {
@@ -61,58 +62,28 @@ header img {
     }
 }
 
-/* 
-==============================
-Active Category Link Styles
-==============================
-*/
-.category-link {
-    display: inline-block;
-    padding: 15px;
-    border-radius: 5px;
-    color: inherit;
+/* Categories Section */
+.icon-link {
     text-decoration: none;
-    transition: background-color 0.3s ease, font-weight 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-    font-size: 1rem;
+    color: inherit;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect for links */
-.category-link:hover {
-    color: #007bff; /* Blue color on hover */
+.icon-link:hover {
+    color: #007bff; /* Highlight color */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
 }
 
-/* Active styles for focused or checked links */
-.category-radio:checked + .category-link,
-.category-link:focus {
-    background-color: #007bff; /* Matches primary color */
-    color: white;
-    font-weight: bold;
-    outline: none; /* Removes default browser outline */
+.icon-link i {
+    font-size: 2.5rem; /* Ensures large icons */
+    margin-bottom: 0.5rem;
 }
 
-/* Responsive styles for categories */
-@media (max-width: 768px) {
-    .category-link {
-        display: block; /* Makes the links stack vertically */
-        text-align: center; /* Centers the text */
-        margin-bottom: 10px; /* Adds spacing between categories */
-    }
+.icon-link p {
+    margin: 0; /* Removes default paragraph margin */
+    font-weight: bold; /* Makes category labels stand out */
 }
 
-/* 
-==============================
-Table Styles 
-==============================
-*/
-table span {
-    font-size: medium;
-    font-weight: 400;
-}
-
-#list button, #list a {
-    max-block-size: 40px;
-}
 
 /* 
 ==============================
@@ -123,6 +94,7 @@ footer {
     background-color: #f8f9fa; /* Light gray footer background. */
     padding: 32px 0; /* 32px padding above and below the footer content. */
     text-align: center; /* Centers all footer text. */
+    max-width: 100%; /* Prevents footer stretching beyond the page width. */
 }
 
 footer h5 {

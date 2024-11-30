@@ -9,6 +9,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,18 +22,21 @@ $result = $conn->query($sql);
         /* Placeholder for additional custom styles (inline CSS) */
     </style>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <!-- Navbar Section -->
     <header class="bg-primary py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <img src="imgs/jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2" style="height: 100px; width: 120px;">
+                <img src="imgs/jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2"
+                    style="height: 100px; width: 120px;">
                 <span class="fs-4 text-white"></span>
             </div>
 
             <div class="flex-grow-1 mx-3">
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search for items..." aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search for items..."
+                        aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
@@ -51,16 +55,11 @@ $result = $conn->query($sql);
                 <?php
                 session_start();
                 if (isset($_SESSION['username'])):
-                ?>
+                    ?>
                     <!-- Dropdown menu for logged-in user -->
                     <div class="dropdown">
-                        <button
-                            class="btn btn-outline-light dropdown-toggle"
-                            type="button"
-                            id="userDropdown"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <?= $_SESSION['username'] ?> <i class="bi bi-person-circle"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -68,15 +67,18 @@ $result = $conn->query($sql);
                             <li><a class="dropdown-item" href="MyItems.php">My Items</a></li>
                             <li><a class="dropdown-item" href="Favorites.php">Favorites</a></li>
                             <li><a class="dropdown-item" href="NewItem.php">List New Item</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item text-danger" href="HomePage.php">Sign Out</a></li>
                         </ul>
                     </div>
-                <?php
+                    <?php
                 else:
-                ?>
-                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signInModal">Login</button>
-                <?php
+                    ?>
+                    <button class="btn btn-outline-light" data-bs-toggle="modal"
+                        data-bs-target="#signInModal">Login</button>
+                    <?php
                 endif;
                 ?>
             </nav>
@@ -152,13 +154,13 @@ $result = $conn->query($sql);
     </section>
 
 
-   <!-- Popular items section -->
+<!-- Popular items section -->
 <section class="container mb-5">
     <h2 class="mb-4 text-center text-primary">Popular Items</h2>
     <div class="row g-4">
         <?php
-        // Fetch products from the database
-        $sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; 
+        // Fetch products with the least quantity from the database
+        $sql = "SELECT * FROM Products WHERE status = 'available' ORDER BY quantity ASC LIMIT 6";
         $result = $conn->query($sql);
 
         // Loop through products and display them in cards
@@ -177,10 +179,9 @@ $result = $conn->query($sql);
                         <div class='card-img-overlay text-end p-2'>
                             <span class='badge bg-primary fs-6'>$$price</span>
                         </div>
-                        <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
+                        <img src='uploads/$image' class='card-img-top' alt='$name' style='height: 25rem; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;'>
                         <div class='card-body text-center'>
                             <h5 class='card-title fw-bold text-primary'>$name</h5>
-                            <p class='card-text text-muted'>$description</p>
                         </div>
                     </a>
                 </div>
@@ -195,8 +196,9 @@ $result = $conn->query($sql);
 
 
 
+
 </main>
-  
+
 <!-- Footer -->
 <footer class="mt-auto bg-light py-4">
     <!-- Container to structure the footer content -->
@@ -243,7 +245,8 @@ $result = $conn->query($sql);
                     <!-- Website URL with clickable link -->
                     <li>
                         <i class="bi bi-globe me-2"></i>
-                        <a href="https://www.storename.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a>
+                        <a href="https://www.storename.com" target="_blank"
+                            class="text-dark text-decoration-none">www.Jeek.com</a>
                     </li>
                 </ul>
 
@@ -270,4 +273,5 @@ $result = $conn->query($sql);
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Include the JavaScript for password confirmation -->
+
 </html>

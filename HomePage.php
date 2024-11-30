@@ -377,8 +377,8 @@ $result = $conn->query($sql);
     <h2 class="mb-4 text-center text-primary">Popular Items</h2>
     <div class="row g-4">
         <?php
-        // Fetch products from the database
-        $sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; 
+        // Fetch products with the least quantity from the database
+        $sql = "SELECT * FROM Products WHERE status = 'available' ORDER BY quantity ASC LIMIT 6";
         $result = $conn->query($sql);
 
         // Loop through products and display them in cards
@@ -393,14 +393,13 @@ $result = $conn->query($sql);
                 // Link to the product details page with the product ID
                 echo "
                 <div class='col-md-4'>
-                    <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                    <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
                         <div class='card-img-overlay text-end p-2'>
                             <span class='badge bg-primary fs-6'>$$price</span>
                         </div>
-                        <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
+                        <img src='uploads/$image' class='card-img-top' alt='$name' style='height: 25rem; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;'>
                         <div class='card-body text-center'>
                             <h5 class='card-title fw-bold text-primary'>$name</h5>
-                            <p class='card-text text-muted'>$description</p>
                         </div>
                     </a>
                 </div>

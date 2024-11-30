@@ -8,6 +8,13 @@ Card Styles
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations for hover effects. */
     position: relative; /* Required to position elements within the card properly. */
     cursor: pointer; /* Indicates the card is clickable. */
+    flex: 1 1 auto; /* Allows cards to resize flexibly. */
+    max-width: 320px; /* Restricts card width to a reasonable maximum. */
+    margin: 0 auto; /* Centers the card in its container. */
+    height: auto; /* Removes fixed height to adapt to content. */
+    display: flex; /* Enables flexible layout for card content. */
+    flex-direction: column; /* Stacks content vertically. */
+    overflow: hidden; /* Hides content that overflows the card. */
 }
 
 .card:hover {
@@ -16,19 +23,42 @@ Card Styles
 }
 
 .card-img-top {
-    height: 300px; /* Sets a fixed height for card images. */
-    object-fit: cover; /* Ensures images fill the area without distortion. */
-    max-width: 100%; /* Keeps images responsive. */
+    max-width: 100%; /* Ensures the image does not exceed card width. */
+    height: auto; /* Allows flexible image height. */
+    object-fit: cover; /* Ensures the image fills its area without distortion. */
+    object-position: center; /* Centers the image. */
+    flex-shrink: 0; /* Prevents the image from shrinking. */
 }
 
-/* Non-clickable button styles */
-.card .btn {
-    z-index: 1; /* Keeps the button visually above other elements. */
-    pointer-events: none; /* Disables all interaction with the button. */
-    cursor: default; /* Indicates that the button is non-clickable. */
+.btn-custom {
+    border: 2px solid blue;
+    color: blue;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-/* Optional additional style for the disabled button (if needed) */
-.card .btn-outline-primary {
-    opacity: 0.7; /* Reduces the button opacity slightly for a "disabled" look. */
+.btn-custom:hover {
+    background-color: blue;
+    color: white;
 }
+
+.card-img-overlay {
+    position: absolute; /* Ensures overlay stays over the image */
+    top: 0;
+    right: 0;
+    padding: 8px;
+    z-index: 1;
+}
+
+.badge {
+    font-size: 2rem; /* Dramatically increases the font size */
+    padding: 1rem 2rem; /* Adds generous padding for a larger look */
+    border-radius: 1rem; /* Makes the badge more rounded */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Increases shadow for a prominent effect */
+    display: inline-block; /* Ensures proper alignment and size adjustment */
+}
+
+

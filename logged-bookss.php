@@ -88,18 +88,14 @@ $result = $conn->query($sql);
     
 
 
-    <main class="flex-grow-1">
-
-
-       <!-- Categories section -->
+<main class="flex-grow-1">
+    <!-- Categories section -->
     <section class="container my-5">
         <!-- Row to organize categories horizontally -->
         <div class="row text-center">
             <!-- Category: Art -->
             <div class="col">
-                <!-- Link with an icon and label -->
                 <a href="logged-art.php" class="icon-link">
-                    <!-- Icon representing art -->
                     <i class="bi bi-palette display-4 mb-2"></i>
                     <p>Art</p>
                 </a>
@@ -107,7 +103,6 @@ $result = $conn->query($sql);
             <!-- Category: Interiors -->
             <div class="col">
                 <a href="logged-interiors.php" class="icon-link">
-                    <!-- Icon representing interiors -->
                     <i class="bi bi-house-door display-4 mb-2"></i>
                     <p>Interiors</p>
                 </a>
@@ -115,7 +110,6 @@ $result = $conn->query($sql);
             <!-- Category: Jewelry -->
             <div class="col">
                 <a href="logged-jewelry.php" class="icon-link">
-                    <!-- Icon representing jewelry -->
                     <i class="bi bi-gem display-4 mb-2"></i>
                     <p>Jewelry</p>
                 </a>
@@ -123,7 +117,6 @@ $result = $conn->query($sql);
             <!-- Category: Watches -->
             <div class="col">
                 <a href="logged-watches.php" class="icon-link">
-                    <!-- Icon representing watches -->
                     <i class="bi bi-watch display-4 mb-2"></i>
                     <p>Watches</p>
                 </a>
@@ -131,7 +124,6 @@ $result = $conn->query($sql);
             <!-- Category: Coins & Stamps -->
             <div class="col">
                 <a href="logged-coins.php" class="icon-link">
-                    <!-- Icon representing coins and stamps -->
                     <i class="bi bi-coin display-4 mb-2"></i>
                     <p>Coins & Stamps</p>
                 </a>
@@ -139,7 +131,6 @@ $result = $conn->query($sql);
             <!-- Category: Books & History -->
             <div class="col">
                 <a href="logged-bookss.php" class="icon-link">
-                    <!-- Icon representing books and history -->
                     <i class="bi bi-book display-4 mb-2"></i>
                     <p>Books & History</p>
                 </a>
@@ -147,45 +138,55 @@ $result = $conn->query($sql);
         </div>
     </section>
 
-    <h1 class="text-center mb-4">Art</h1>
+    <h1 class="text-center mb-4">Books & History</h1>
     <div class="row g-4">
 
-    <?php
-    // Fetch products from the database where catagory_id is 1
-    $sql = "SELECT * FROM Products WHERE status = 'available' AND categorie_id = 6"; 
-    $result = $conn->query($sql);
+    <!-- Replace the inner <main> with <section> -->
+    <section class="flex-grow-1">
+        <section class="container my-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <?php
+            // Fetch products from the database where category_id is 1
+            $sql = "SELECT * FROM Products WHERE status = 'available' AND categorie_id = 6"; 
+            $result = $conn->query($sql);
 
-    // Loop through products and display them in cards
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $product_id = $row['product_id']; // Assuming the primary key is product_id
-            $name = $row['name'];
-            $description = $row['description'];
-            $price = $row['price'];
-            $image = $row['image'];
+            // Loop through products and display them in cards
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $product_id = $row['product_id']; // Assuming the primary key is product_id
+                    $name = $row['name'];
+                    $description = $row['description'];
+                    $price = $row['price'];
+                    $image = $row['image'];
 
-            // Link to the product details page with the product ID
-            echo "
-            <div class='col-md-4'>
-                <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
-                    <div class='card-img-overlay text-end p-2'>
-                        <span class='badge bg-primary fs-6'>$$price</span>
+                    // Use a fixed color for the badge
+                    $fixedColor = 'primary';
+
+                    echo "
+                    <div class='col'>
+                        <div class='card shadow-lg border-0 position-relative hover-effect' style='width: 100%; max-width: 30rem; cursor: pointer; transition: transform 0.3s ease;'>
+                            <a href='logged-product_page.php?id=$product_id' class='text-decoration-none' style='color: inherit;'>
+                                <div class='card-img-overlay text-end p-2'>
+                                    <span class='badge bg-$fixedColor' style='font-size: 1rem; padding: 0.5rem 1rem; border-radius: 0.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);'>$$price</span>
+                                </div>
+                                <img src='uploads/$image' class='card-img-top' alt='$name' style='height: 25rem; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;'>
+                                <div class='card-body text-center'>
+                                    <h5 class='card-title text-primary'>$name</h5>
+                                    <a href='#' class='btn btn-outline-secondary'>View</a>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
-                    <div class='card-body text-center'>
-                        <h5 class='card-title fw-bold text-primary'>$name</h5>
-                        <p class='card-text text-muted'>$description</p>
-                    </div>
-                </a>
+                    ";
+                }
+            } else {
+                echo "<p>No products available at the moment.</p>";
+            }
+            ?>
             </div>
-            ";
-        }
-    } else {
-        echo "<p>No products available at the moment.</p>";
-    }
-?>
-
-    </main>
+        </section>
+    </section>
+</main>
     
 
     

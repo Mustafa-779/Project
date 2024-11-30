@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS Categories (
 $sql_products = "
 CREATE TABLE IF NOT EXISTS Products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT, -- Foreign key to link the product to a user
     categorie_id INT,
     name VARCHAR(255) NOT NULL,
     price FLOAT NOT NULL,
@@ -64,8 +65,8 @@ CREATE TABLE IF NOT EXISTS Products (
     ispopular TINYINT(1) DEFAULT 0,
     features VARCHAR(1000),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (categorie_id) REFERENCES Categories(categorie_id) ON DELETE SET NULL,
-    UNIQUE (categorie_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (categorie_id) REFERENCES Categories(categorie_id) ON DELETE SET NULL
 );";
 
 // Payments table
@@ -84,15 +85,14 @@ $sql_reviews = "
 CREATE TABLE IF NOT EXISTS Reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
-    user_id INT UNIQUE,
+    user_id INT,
     rating FLOAT NOT NULL,
     comment VARCHAR(1000),
     likes INT DEFAULT 0,
     dislikes INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    UNIQUE (user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );";
 
 // Execute all the queries to create tables
@@ -120,6 +120,5 @@ if ($conn->query($sql_reviews) !== TRUE) {
     // Optionally log errors for debugging
     error_log("Error creating Reviews table: " . $conn->error);
 }
-
 
 ?>

@@ -9,24 +9,30 @@ $message = "";
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve form data
-    $name = $_POST['name'];
-    $category = $_POST['category'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $quantity = $_POST['quantity'];
-    $image = $_FILES['image']['name']; // Uploaded file name
+    // Retrieve and sanitize form data
+    $name = trim($_POST['name']);
+    $category = trim($_POST['category']);
+    $description = trim($_POST['description']);
+    $price = floatval($_POST['price']);
+    $quantity = intval($_POST['quantity']);
 
-    // Handle file upload
+    // Handle image upload
+    $image = isset($_FILES['image']['name']) && !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : "default.jpg";
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($image);
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-        // Fetch category ID based on the selected category name
-        $categoryQuery = $conn->prepare("SELECT categorie_id FROM Categories WHERE name = ?");
-        $categoryQuery->bind_param("s", $category);
-        $categoryQuery->execute();
-        $categoryResult = $categoryQuery->get_result();
+    if (!empty($_FILES['image']['name']) && !move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+        $message = "Error uploading the image.";
+        $image = "default.jpg"; // Fallback image
+    }
+
+    // Fetch category ID based on the selected category name
+    $categoryQuery = $conn->prepare("SELECT categorie_id FROM Categories WHERE LOWER(name) = LOWER(?)");
+    $categoryQuery->bind_param("s", $category);
+    $categoryQuery->execute();
+    $categoryResult = $categoryQuery->get_result();
+
+    if ($categoryResult->num_rows > 0) {
         $category_id = $categoryResult->fetch_assoc()['categorie_id'];
 
         // Insert the new item into the Products table
@@ -34,13 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 VALUES (?, ?, ?, ?, ?, ?, 'available')");
         $sql->bind_param("isdssi", $category_id, $name, $price, $description, $image, $quantity);
 
-        if ($sql->execute()) {
-            $message = "Item added successfully!";
-        } else {
-            $message = "Error adding item: " . $conn->error;
+        try {
+            if ($sql->execute()) {
+                $message = "Item added successfully!";
+            } else {
+                $message = "Error adding item: " . $conn->error;
+            }
+        } catch (mysqli_sql_exception $e) {
+            $message = "Database error: " . $e->getMessage();
         }
     } else {
-        $message = "Error uploading the image.";
+        $message = "Error: Selected category does not exist.";
     }
 }
 ?>

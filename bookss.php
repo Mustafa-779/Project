@@ -25,7 +25,7 @@ $result = $conn->query($sql);
         <!-- Styles for Navbar and Footer -->
         <link rel="stylesheet" href="css-main/navbar-footer.css">
         <!-- Styles for Cards -->
-        <link rel="stylesheet" href="css-main/art.css">
+        <link rel="stylesheet" href="css-main/cards.css">
         <style>
             /* Placeholder for additional custom styles (inline CSS) */
         </style>
@@ -316,61 +316,48 @@ $result = $conn->query($sql);
     <main class="flex-grow-1">
 
 
+
        <!-- Categories section -->
-    <section class="container my-5">
-        <!-- Row to organize categories horizontally -->
-        <div class="row text-center">
-            <!-- Category: Art -->
-            <div class="col">
-                <!-- Link with an icon and label -->
-                <a href="art.php" class="icon-link text-primary">
-                    <!-- Icon representing art -->
-                    <i class="bi bi-palette display-4 mb-2"></i>
-                    <p class="fw-bold">Art</p>
-                </a>
-            </div>
-            <!-- Category: Interiors -->
-            <div class="col">
-                <a href="interiors.php" class="icon-link">
-                    <!-- Icon representing interiors -->
-                    <i class="bi bi-house-door display-4 mb-2"></i>
-                    <p>Interiors</p>
-                </a>
-            </div>
-            <!-- Category: Jewelry -->
-            <div class="col">
-                <a href="jewelry.php" class="icon-link">
-                    <!-- Icon representing jewelry -->
-                    <i class="bi bi-gem display-4 mb-2"></i>
-                    <p>Jewelry</p>
-                </a>
-            </div>
-            <!-- Category: Watches -->
-            <div class="col">
-                <a href="watches.php" class="icon-link">
-                    <!-- Icon representing watches -->
-                    <i class="bi bi-watch display-4 mb-2"></i>
-                    <p>Watches</p>
-                </a>
-            </div>
-            <!-- Category: Coins & Stamps -->
-            <div class="col">
-                <a href="coins.php" class="icon-link">
-                    <!-- Icon representing coins and stamps -->
-                    <i class="bi bi-coin display-4 mb-2"></i>
-                    <p>Coins & Stamps</p>
-                </a>
-            </div>
-            <!-- Category: Books & History -->
-            <div class="col">
-                <a href="bookss.php" class="icon-link">
-                    <!-- Icon representing books and history -->
-                    <i class="bi bi-book display-4 mb-2"></i>
-                    <p>Books & History</p>
-                </a>
-            </div>
+<section class="container my-5">
+    <div class="row text-center">
+        <div class="col">
+            <a href="art.php" class="icon-link" id="art-link">
+                <i class="bi bi-palette display-4 mb-2"></i>
+                <p class="fw-normal">Art</p>
+            </a>
         </div>
-    </section>
+        <div class="col">
+            <a href="interiors.php" class="icon-link" id="interiors-link">
+                <i class="bi bi-house-door display-4 mb-2"></i>
+                <p class="fw-normal">Interiors</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href="jewelry.php" class="icon-link" id="jewelry-link">
+                <i class="bi bi-gem display-4 mb-2"></i>
+                <p class="fw-normal">Jewelry</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href="watches.php" class="icon-link" id="watches-link">
+                <i class="bi bi-watch display-4 mb-2"></i>
+                <p class="fw-normal">Watches</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href="coins.php" class="icon-link" id="coins-link">
+                <i class="bi bi-coin display-4 mb-2"></i>
+                <p class="fw-normal">Coins & Stamps</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href="bookss.php" class="icon-link" id="books-link">
+                <i class="bi bi-book display-4 mb-2"></i>
+                <p class="fw-normal">Books & History</p>
+            </a>
+        </div>
+    </div>
+</section>
 
     <h1 class="text-center mb-4">Book and History</h1>
     <div class="row g-4">
@@ -481,3 +468,4 @@ $result = $conn->query($sql);
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+

@@ -2,10 +2,38 @@
 // Include the database connection
 require_once 'jeek_DB.php';
 
-// Fetch products from the database
-$sql = "SELECT * FROM Products WHERE status = 'available' LIMIT 6"; // Adjust the query as needed (LIMIT 6 for the first 6 items)
-$result = $conn->query($sql);
+// Check if product ID is passed in the URL
+if (isset($_GET['id'])) {
+    $product_id = $_GET['id'];
+
+    // Fetch product details from the database based on the product ID
+    $sql = "SELECT * FROM Products WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if the product exists
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+        $name = $product['name'];
+        $description = $product['description'];
+        $price = $product['price'];
+        $image = $product['image'];
+        $rating = $product['rating'];  // Assuming the product has a rating
+    } else {
+        // Redirect to home page if the product is not found
+        header("Location: logged-HomePage.php");
+        exit;
+    }
+} else {
+    // Redirect to home page if no product ID is provided
+    header("Location: logged-HomePage.php");
+    exit;
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,109 +112,88 @@ $result = $conn->query($sql);
     </header>
 </body>
 
-
-    
-
-
-    <main class="flex-grow-1">
-
-
-       <!-- Categories section -->
-    <section class="container my-5">
-        <!-- Row to organize categories horizontally -->
-        <div class="row text-center">
-            <!-- Category: Art -->
-            <div class="col">
-                <!-- Link with an icon and label -->
-                <a href="logged-art.php" class="icon-link">
-                    <!-- Icon representing art -->
-                    <i class="bi bi-palette display-4 mb-2"></i>
-                    <p>Art</p>
-                </a>
+<main class="flex-grow-1 my-5">
+    <div class="container">
+        <!-- Item Section -->
+        <section class="row align-items-center">
+            <!-- Left Side: Image and Item Name -->
+            <div class="col-md-6 text-center">
+                <h2 class="mb-4 fw-bold text-primary"><?php echo $name; ?></h2>
+                <p class="fs-4 text-danger fw-bold m-0">
+                    <i class="bi bi-tag-fill me-2"></i>$<?php echo $price; ?>
+                </p>
+                <img src="uploads/<?php echo $image; ?>" alt="Item Image" class="img-fluid rounded shadow">
             </div>
-            <!-- Category: Interiors -->
-            <div class="col">
-                <a href="logged-interiors.php" class="icon-link">
-                    <!-- Icon representing interiors -->
-                    <i class="bi bi-house-door display-4 mb-2"></i>
-                    <p>Interiors</p>
-                </a>
-            </div>
-            <!-- Category: Jewelry -->
-            <div class="col">
-                <a href="logged-jewelry.php" class="icon-link">
-                    <!-- Icon representing jewelry -->
-                    <i class="bi bi-gem display-4 mb-2"></i>
-                    <p>Jewelry</p>
-                </a>
-            </div>
-            <!-- Category: Watches -->
-            <div class="col">
-                <a href="logged-watches.php" class="icon-link">
-                    <!-- Icon representing watches -->
-                    <i class="bi bi-watch display-4 mb-2"></i>
-                    <p>Watches</p>
-                </a>
-            </div>
-            <!-- Category: Coins & Stamps -->
-            <div class="col">
-                <a href="logged-coins.php" class="icon-link">
-                    <!-- Icon representing coins and stamps -->
-                    <i class="bi bi-coin display-4 mb-2"></i>
-                    <p>Coins & Stamps</p>
-                </a>
-            </div>
-            <!-- Category: Books & History -->
-            <div class="col">
-                <a href="logged-bookss.php" class="icon-link">
-                    <!-- Icon representing books and history -->
-                    <i class="bi bi-book display-4 mb-2"></i>
-                    <p>Books & History</p>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <h1 class="text-center mb-4">Art</h1>
-    <div class="row g-4">
+            <!-- Right Side: Description and Details -->
+            <div class="col-md-6">
+                <!-- Description Section -->
+                <div class="mb-4">
+                    <h4 class="fw-bold text-secondary">Description</h4>
+                    <p class="text-muted"><?php echo $description; ?></p>
+                </div>
 
-    <?php
-    // Fetch products from the database where catagory_id is 1
-    $sql = "SELECT * FROM Products WHERE status = 'available' AND categorie_id = 6"; 
-    $result = $conn->query($sql);
-
-    // Loop through products and display them in cards
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $product_id = $row['product_id']; // Assuming the primary key is product_id
-            $name = $row['name'];
-            $description = $row['description'];
-            $price = $row['price'];
-            $image = $row['image'];
-
-            // Link to the product details page with the product ID
-            echo "
-            <div class='col-md-4'>
-                <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
-                    <div class='card-img-overlay text-end p-2'>
-                        <span class='badge bg-primary fs-6'>$$price</span>
+                <!-- Rating Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold text-secondary">Rating</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="text-warning fs-4 me-2">
+                            <?php
+                            // Display stars based on rating (simple 5-star display)
+                            for ($i = 0; $i < 5; $i++) {
+                                if ($i < floor($rating)) {
+                                    echo "<i class='bi bi-star-fill'></i>";
+                                } elseif ($i == floor($rating) && $rating - floor($rating) >= 0.5) {
+                                    echo "<i class='bi bi-star-half'></i>";
+                                } else {
+                                    echo "<i class='bi bi-star'></i>";
+                                }
+                            }
+                            ?>
+                        </span>
+                        <span class="text-muted">(<?php echo $rating; ?>/5)</span>
                     </div>
-                    <img src='uploads/$image' class='card-img-top rounded-top' alt='$name'>
-                    <div class='card-body text-center'>
-                        <h5 class='card-title fw-bold text-primary'>$name</h5>
-                        <p class='card-text text-muted'>$description</p>
-                    </div>
-                </a>
-            </div>
-            ";
-        }
-    } else {
-        echo "<p>No products available at the moment.</p>";
-    }
-?>
+                </div>
 
-    </main>
-    
+        
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3">
+                    <button class="btn btn-outline-primary btn-lg w-50">
+                        <i class="bi bi-heart-fill me-2"></i>Add to Favorites
+                    </button>
+                    <button class="btn btn-outline-danger btn-lg w-50">
+                        <i class="bi bi-flag-fill me-2"></i>Report
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Contact the Owner Section -->
+<div class="contact-owner-section p-4 mb-4">
+    <h4 class="fw-bold text-primary mb-4"><i class="bi bi-person-circle me-2"></i>Contact the Owner</h4>
+    <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-person-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Name:</strong> Ahmed Mohammed</p>
+    </div>
+    <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-envelope-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:Ahmed@gmail.com" class="text-decoration-none text-primary">Ahmed@gmail.com</a></p>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-telephone-fill fs-4 text-secondary me-3"></i>
+        <p class="mb-0"><strong>Phone No.:</strong> +966 (0) 55 1234567</p>
+    </div>
+</div>
+
+
+
+
+        </section>
+    </div>
+</main>
 
     
 <!-- Footer -->

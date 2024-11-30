@@ -102,7 +102,7 @@ $result = $conn->query($sql);
             <!-- Category: Art -->
             <div class="col">
                 <!-- Link with an icon and label -->
-                <a href="art.php" class="icon-link">
+                <a href="logged-art.php" class="icon-link">
                     <!-- Icon representing art -->
                     <i class="bi bi-palette display-4 mb-2"></i>
                     <p>Art</p>
@@ -110,7 +110,7 @@ $result = $conn->query($sql);
             </div>
             <!-- Category: Interiors -->
             <div class="col">
-                <a href="interiors.php" class="icon-link">
+                <a href="logged-interiors.php" class="icon-link">
                     <!-- Icon representing interiors -->
                     <i class="bi bi-house-door display-4 mb-2"></i>
                     <p>Interiors</p>
@@ -118,7 +118,7 @@ $result = $conn->query($sql);
             </div>
             <!-- Category: Jewelry -->
             <div class="col">
-                <a href="jewelry.php" class="icon-link">
+                <a href="logged-jewelry.php" class="icon-link">
                     <!-- Icon representing jewelry -->
                     <i class="bi bi-gem display-4 mb-2"></i>
                     <p>Jewelry</p>
@@ -126,7 +126,7 @@ $result = $conn->query($sql);
             </div>
             <!-- Category: Watches -->
             <div class="col">
-                <a href="watches.php" class="icon-link">
+                <a href="logged-watches.php" class="icon-link">
                     <!-- Icon representing watches -->
                     <i class="bi bi-watch display-4 mb-2"></i>
                     <p>Watches</p>
@@ -134,7 +134,7 @@ $result = $conn->query($sql);
             </div>
             <!-- Category: Coins & Stamps -->
             <div class="col">
-                <a href="coins.php" class="icon-link">
+                <a href="logged-coins.php" class="icon-link">
                     <!-- Icon representing coins and stamps -->
                     <i class="bi bi-coin display-4 mb-2"></i>
                     <p>Coins & Stamps</p>
@@ -142,7 +142,7 @@ $result = $conn->query($sql);
             </div>
             <!-- Category: Books & History -->
             <div class="col">
-                <a href="bookss.php" class="icon-link">
+                <a href="logged-bookss.php" class="icon-link">
                     <!-- Icon representing books and history -->
                     <i class="bi bi-book display-4 mb-2"></i>
                     <p>Books & History</p>
@@ -151,12 +151,6 @@ $result = $conn->query($sql);
         </div>
     </section>
 
-<!-- Categories section -->
-<section class="container my-5">
-        <div class="row text-center">
-            <!-- Categories here, same as your code -->
-        </div>
-    </section>
 
    <!-- Popular items section -->
 <section class="container mb-5">
@@ -179,7 +173,7 @@ $result = $conn->query($sql);
                 // Link to the product details page with the product ID
                 echo "
                 <div class='col-md-4'>
-                    <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                    <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
                         <div class='card-img-overlay text-end p-2'>
                             <span class='badge bg-primary fs-6'>$$price</span>
                         </div>

@@ -15,10 +15,9 @@ if ($conn->connect_error) {
 
 // Step 1: Create the Database
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully or already exists.<br>";
-} else {
-    echo "Error creating database: " . $conn->error . "<br>";
+if ($conn->query($sql) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating database: " . $conn->error);
 }
 
 // Select the newly created database
@@ -97,36 +96,30 @@ CREATE TABLE IF NOT EXISTS Reviews (
 );";
 
 // Execute all the queries to create tables
-if ($conn->query($sql_users) === TRUE) {
-    echo "Users table created successfully.<br>";
-} else {
-    echo "Error creating Users table: " . $conn->error . "<br>";
+if ($conn->query($sql_users) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating Users table: " . $conn->error);
 }
 
-if ($conn->query($sql_categories) === TRUE) {
-    echo "Categories table created successfully.<br>";
-} else {
-    echo "Error creating Categories table: " . $conn->error . "<br>";
+if ($conn->query($sql_categories) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating Categories table: " . $conn->error);
 }
 
-if ($conn->query($sql_products) === TRUE) {
-    echo "Products table created successfully.<br>";
-} else {
-    echo "Error creating Products table: " . $conn->error . "<br>";
+if ($conn->query($sql_products) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating Products table: " . $conn->error);
 }
 
-if ($conn->query($sql_payments) === TRUE) {
-    echo "Payments table created successfully.<br>";
-} else {
-    echo "Error creating Payments table: " . $conn->error . "<br>";
+if ($conn->query($sql_payments) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating Payments table: " . $conn->error);
 }
 
-if ($conn->query($sql_reviews) === TRUE) {
-    echo "Reviews table created successfully.<br>";
-} else {
-    echo "Error creating Reviews table: " . $conn->error . "<br>";
+if ($conn->query($sql_reviews) !== TRUE) {
+    // Optionally log errors for debugging
+    error_log("Error creating Reviews table: " . $conn->error);
 }
-
 
 
 ?>

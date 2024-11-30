@@ -23,12 +23,12 @@ if (isset($_GET['id'])) {
         $rating = $product['rating'];  // Assuming the product has a rating
     } else {
         // Redirect to home page if the product is not found
-        header("Location: home.php");
+        header("Location: HomePage.php");
         exit;
     }
 } else {
     // Redirect to home page if no product ID is provided
-    header("Location: home.php");
+    header("Location: HomePage.php");
     exit;
 }
 ?>

@@ -22,9 +22,9 @@ $result = $conn->query($sql);
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-        <script src="js-main/forgot_password.js"></script>
+        <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        
         <!-- Styles for Navbar and Footer -->
         <link rel="stylesheet" href="css-main/navbar-footer.css">
         <!-- Styles for Cards -->
@@ -80,9 +80,8 @@ $result = $conn->query($sql);
             </nav>
         </div>
     </header>
-    </body>
 
-<!-- Login modal (Pop-up) -->
+    <!-- Login modal (Pop-up) -->
 <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
     <!-- Modal dialog container -->
     <div class="modal-dialog">
@@ -138,172 +137,110 @@ $result = $conn->query($sql);
 </div>
 
 
-<!-- Step 1: Enter Username -->
-<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="forgotPasswordModalLabel">Reset your password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="usernameForm">
-                    <p class="mb-3">Enter your username to fetch the security question.</p>
-                    <div class="mb-3">
-                        <label for="forgotPasswordUsername" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="forgotPasswordUsername" name="username" placeholder="Enter your username" required>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Next</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Step 2: Answer Security Question -->
-<div class="modal fade" id="securityQuestionModal" tabindex="-1" aria-labelledby="securityQuestionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="securityQuestionModalLabel">Answer Security Question</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="securityQuestionForm">
-                    <p id="securityQuestionText" class="mb-3"></p>
-                    <div class="mb-3">
-                        <label for="securityAnswerInput" class="form-label">Answer</label>
-                        <input type="text" class="form-control" id="securityAnswerInput" name="security_answer" placeholder="Enter your answer" required>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Next</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Step 3: Enter New Password -->
-<div class="modal fade" id="newPasswordModal" tabindex="-1" aria-labelledby="newPasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newPasswordModalLabel">Set New Password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="newPasswordForm">
-                    <p class="mb-4">Enter a new password for your account.</p>
-                    <!-- New password input field -->
-                    <div class="mb-3">
-                        <label for="newPasswordInput" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="newPasswordInput" name="new_password" placeholder="Enter your new password" required>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Reset Password</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Register modal (Pop-up) -->
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="registerModalLabel">Register</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
-                <!-- Registration form -->
                 <form action="register.php" method="POST">
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" id="firstName" name="first_name" required placeholder="Enter your first name">
+                    <!-- Name Fields -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter your first name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                    <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Enter your last name" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                            <input type="text" class="form-control" id="lastName" name="last_name" required placeholder="Enter your last name">
-                        </div>
-                    </div>
-
+                    <!-- Username -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                            <input type="text" class="form-control" id="username" name="username" required placeholder="Choose a username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
                         </div>
                     </div>
 
+                    <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email address">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
                         </div>
                     </div>
-                    
-                    <div class="mb-3">
-    <label for="phoneNumber" class="form-label">Phone Number</label>
-    <div class="input-group">
-        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-        <input 
-            type="tel" 
-            class="form-control" 
-            id="phoneNumber" 
-            name="phone_number" 
-            minlength="10" 
-            required 
-            placeholder="Enter your phone number">
-    </div>
-</div>
 
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                            <input type="tel" class="form-control" id="phoneNumber" name="phone_number" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                            <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                         </div>
                     </div>
 
+                    <!-- Confirm Password -->
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required placeholder="Re-enter your password">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Re-enter your password" required>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="securityQuestion" class="form-label">Security Question</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-question-circle"></i></span>
-                            <select class="form-select" id="securityQuestion" name="security_question" required>
-                                <option value="">Select a question</option>
-                                <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
-                                <option value="What was the name of your first pet?">What was the name of your first pet?</option>
-                                <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
-                            </select>
-                        </div>
-                    </div>
+<!-- Security Question -->
+<div class="mb-3">
+    <label for="securityQuestion" class="form-label">Security Question</label>
+    <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-question-circle"></i></span>
+        <select class="form-select" id="securityQuestion" name="security_question" required>
+            <option value="">Select a question</option>
+            <option value="What is your youngest brother/sister name?">What is your youngest brother/sister name?</option>
+            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+            <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
+            <option value="What is your favorite book?">What is your favorite book?</option>
+            <option value="What is the name of the city where you were born?">What is the name of the city where you were born?</option>
+            <option value="What is your father's middle name?">What is your father's middle name?</option>
+            <option value="What was the make and model of your first car?">What was the make and model of your first car?</option>
+            <option value="What is the name of your best friend from childhood?">What is the name of your best friend from childhood?</option>
+            <option value="What is the name of the street you grew up on?">What is the name of the street you grew up on?</option>
+        </select>
+    </div>
+</div>
 
+                    <!-- Security Answer -->
                     <div class="mb-3">
                         <label for="securityAnswer" class="form-label">Answer</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-                            <input type="text" class="form-control" id="securityAnswer" name="security_answer" required placeholder="Enter your answer">
+                            <input type="text" class="form-control" id="securityAnswer" name="security_answer" placeholder="Enter your answer" required>
                         </div>
                     </div>
 
@@ -312,7 +249,6 @@ $result = $conn->query($sql);
                     </div>
                 </form>
             </div>
-
             <div class="modal-footer text-center">
                 <p class="mb-0 w-100">
                     <a href="#" class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signInModal">Already have an account? Login</a>
@@ -322,9 +258,60 @@ $result = $conn->query($sql);
     </div>
 </div>
 
+<!-- Forgot Password Modal (Pop-up) -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <!-- Modal dialog container -->
+    <div class="modal-dialog">
+        <!-- Modal content: Contains header, body, and footer -->
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgotPasswordModalLabel">Reset Your Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal body: Contains the form for resetting password -->
+            <div class="modal-body">
+                <!-- Reset password form starts -->
+                <form action="check_username.php" method="POST">
+                    <!-- Username input field -->
+                    <div class="mb-3">
+                        <label for="resetPassword" class="form-label">Username or Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                            <input type="text" class="form-control" id="resetPassword" name="reset_password" placeholder="Enter your username or email" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer text-center">
+                <p class="mb-0 w-100">
+                    <a href="#" class="text-decoration-none" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signInModal">Remember your password? Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
+
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    </body>
 
 
 
@@ -492,7 +479,4 @@ $result = $conn->query($sql);
 
 
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Include the JavaScript for password confirmation -->
-<script src="js-main/Confirm-password.js"></script>
+

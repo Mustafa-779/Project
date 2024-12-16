@@ -35,11 +35,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Password is correct, set session variables
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
-            $_SESSION['role'] = $row['role'];  // You can use this to check the role if needed
+            $_SESSION['role'] = $row['role'];  // Assuming 'role' column is 'admin', 'staff', or 'customer'
 
-            // Redirect to the logged-in page
-            header("Location: logged-HomePage.php");
-            exit();
+            // Check the user's role and redirect accordingly
+            if ($row['role'] === 'admin') {
+                // Redirect admin to the admin dashboard
+                header("Location: admin-dashboard.php");
+                exit();
+            } elseif ($row['role'] === 'staff') {
+                // Redirect staff to the staff dashboard
+                header("Location: staff-dashboard.php");
+                exit();
+            } else {
+                // Redirect customer to the home page
+                header("Location: logged-HomePage.php");
+                exit();
+            }
         } else {
             // Invalid password
             echo "Invalid password.";

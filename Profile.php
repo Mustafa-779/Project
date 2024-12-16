@@ -179,74 +179,42 @@
                 </div>
 
                 <!-- Modal body: Contains the Update form -->
+                <!-- Modal body: Contains the Update form -->
                 <div class="modal-body">
-                    <!-- Update form starts -->
                     <form action="updateAccount.php" method="POST">
-                        <!-- Input field for first name -->
                         <div class="mb-3">
-                            <!-- Label for first name -->
                             <label for="updatedFirstName" class="form-label">*First Name:</label>
-                            <!-- Input group: Combines an icon and input field -->
                             <div class="input-group">
-                                <!-- Icon for first name -->
                                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                <!-- Text input field for first name -->
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="updatedFirstName"
-                                    name="first_name"
-                                    placeholder="first name"
-                                    required />
+                                <input type="text" class="form-control" id="updatedFirstName" name="first_name" value="<?= $_SESSION['first_name'] ?>" required />
                             </div>
                         </div>
 
-                        <!-- Input field for last name -->
                         <div class="mb-3">
                             <label for="updatedLastName" class="form-label">*Last Name:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="updatedLastName"
-                                    name="last_name"
-                                    placeholder="last name"
-                                    required />
+                                <input type="text" class="form-control" id="updatedLastName" name="last_name" value="<?= $_SESSION['last_name'] ?>" required />
                             </div>
                         </div>
 
-                        <!-- Input field for username -->
                         <div class="mb-3">
                             <label for="updatedUsername" class="form-label">*Username:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="updatedUsername"
-                                    name="username"
-                                    placeholder="username"
-                                    required />
+                                <input type="text" class="form-control" id="updatedUsername" name="username" value="<?= $_SESSION['username'] ?>" required />
                             </div>
                         </div>
-                        <!-- Input field for password -->
+
                         <div class="mb-3">
                             <label for="updatedPassword" class="form-label">*Password:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    id="updatedPassword"
-                                    name="password"
-                                    placeholder="password"
-                                    required />
+                                <input type="password" class="form-control" id="updatedPassword" name="password" placeholder="password" required />
                             </div>
                         </div>
-                        <!-- Submit button for creating an account -->
+
                         <div class="d-grid">
-                            <!-- Button spans the entire width of its container -->
                             <button type="submit" class="btn btn-primary">Update Information</button>
                         </div>
                     </form>

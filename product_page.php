@@ -16,11 +16,19 @@ if (isset($_GET['id'])) {
     // Check if the product exists
     if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
+        $user_id = $product["user_id"];
         $name = $product['name'];
         $description = $product['description'];
         $price = $product['price'];
         $image = $product['image'];
         $rating = $product['rating'];  // Assuming the product has a rating
+
+        $sql = "SELECT * FROM users WHERE user_id = $user_id";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+        $user_name = $user["first_name"] . " ". $user["last_name"];
+        $user_email = $user["email"];
+        $user_phone = $user["phone_number"];
     } else {
         // Redirect to home page if the product is not found
         header("Location: HomePage.php");
@@ -404,15 +412,15 @@ if (isset($_GET['id'])) {
     <h4 class="fw-bold text-primary mb-4"><i class="bi bi-person-circle me-2"></i>Contact the Owner</h4>
     <div class="d-flex align-items-center mb-3">
         <i class="bi bi-person-fill fs-4 text-secondary me-3"></i>
-        <p class="mb-0"><strong>Name:</strong> Ahmed Mohammed</p>
+        <p class="mb-0"><strong>Name:</strong> <?php echo $user_name?></p>
     </div>
     <div class="d-flex align-items-center mb-3">
         <i class="bi bi-envelope-fill fs-4 text-secondary me-3"></i>
-        <p class="mb-0"><strong>Email:</strong> <a href="mailto:Ahmed@gmail.com" class="text-decoration-none text-primary">Ahmed@gmail.com</a></p>
+        <p class="mb-0"><strong>Email:</strong> <a href="mailto:Ahmed@gmail.com" class="text-decoration-none text-primary"><?php echo $user_email?></a></p>
     </div>
     <div class="d-flex align-items-center">
         <i class="bi bi-telephone-fill fs-4 text-secondary me-3"></i>
-        <p class="mb-0"><strong>Phone No.:</strong> +966 (0) 55 1234567</p>
+        <p class="mb-0"><strong>Phone No.:</strong> +966 <?php echo $user_phone?></p>
     </div>
 </div>
 

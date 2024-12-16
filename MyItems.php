@@ -132,52 +132,54 @@ require_once 'jeek_DB.php';
                 </div>
             </div>
             <div id="list" class="col-md-10 p-lg-5" style="padding-bottom: 200px">
-                <!-- Items List, each row represents 1 item -->
-                <!-- Rows are gonna be created using js. Rows below are samples -->
                 <?php
-                
-                $sql = "SELECT * FROM Products WHERE user_id='$_SESSION[user_id]'";
-                $result = $conn->query($sql);
 
-                // Loop through products and display them in cards
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $product_id = $row['product_id']; // Assuming the primary key is product_id
-                        $name = $row['name'];
-                        $description = $row['description'];
-                        $price = $row['price'];
-                        $image = $row['image'];
-                        $category_id = $row['categorie_id'];
+                    $sql = "SELECT * FROM Products WHERE user_id='$_SESSION[user_id]'";
+                    $result = $conn->query($sql);
+                    
+                    // Loop through products and display them in cards
+                    if ($result->num_rows > 0) {
+                        echo "<div class='row'>";
+                        while ($row = $result->fetch_assoc()) {
+                            $product_id = $row['product_id'];
+                            $name = $row['name'];
+                            $description = $row['description'];
+                            $price = $row['price'];
+                            $image = $row['image'];
+                            $quantity = $row['quantity'];
+                            $category_id = $row['categorie_id'];
 
-                        $sql = "SELECT * FROM categories WHERE categorie_id='$category_id'";
-                        $result = $conn->query($sql);
+                            $sql = "SELECT * FROM categories WHERE categorie_id='$category_id'";
+                            $result = $conn->query($sql);
+                            $category_row = $result->fetch_assoc();
+                            $category = $category_row["name"];
 
-                        $row = $result->fetch_assoc();
-                        $category = $row["name"];
-
-                        echo "
-                        <div class='text-start mb-2' style='font-size: large'>Number of listed items: <span id='numItems'>$result->num_rows</span></div>
-                                <div class='row'>
-                                    <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
-                                        <div class='card mb-2' style='max-height: 200px'>
-                                            <div class='row g-0'>
-                                                <div class='col-md-2'>
-                                                    <img
-                                                    src='uploads/$image' 
-                                                    class='img-fluid rounded-start'
-                                                    style='max-height: 200px; max-width: 200px'
-                                                    alt='$name' />
-                                                </div>
-                                            <div class='col-md-8'>
-                                        <div class='card-body'>
-                                        <h5 class='card-title pt-3'>$name</h5>
-                                        <p class='card-text'>$category</p>
-                                    </a>
-                                </div>
-                            <div class='col-md-2 p-md-5'>
-                        <div class='row'><button name='remove' class='btn btn-danger'>Remove</button></div>";
+                            echo "
+                            <div class='text-end mb-2' style='font-size: large'>Number of listed items: <span id=numItems> $result->num_rows</span></div>
+                            <div class='col-md-4 mb-4'>
+                                <div class='card shadow-sm border-0 h-100'>
+                                
+                                    <img src='uploads/$image' class='card-img-top' alt='$name' style='height: 200px; object-fit: cover;'>
+                                    <div class='card-body d-flex flex-column'>
+                                        <h5 class='card-title'>$name</h5>
+                                        <p class='card-text text-muted'>$category</p>
+                                        <p class='card-text'><strong>Price:</strong> $price</p>
+                                        <p class='card-text flex-grow-1'>$description</p>
+                                        <div class='d-flex justify-content-between'>
+                                            <a href='logged-product_page.php?id=$product_id' class='btn btn-primary'>View Details</a>
+                                            <button name='remove' class='btn btn-danger'>withdraw</button>
+                                        </div>
+                                    </div>
+                                        <div class='text-center p-2'>
+                                            <span class='badge bg-primary fs-6'>$quantity Pieces</span>
+                                        </div>
+                                    </div>
+                                </div>";
+                        }
+                        echo "</div>"; // Close row
+                    } else {
+                        echo "<p>No products listed.</p>";
                     }
-                }
                 ?>
 
 

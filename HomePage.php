@@ -112,7 +112,7 @@ $result = $conn->query($sql);
                     // Link to the product details page with the product ID
                     echo "
                 <div class='col-md-4'>
-                    <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
+                    <a href='product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
                         <div class='card-img-overlay text-end p-2'>
                             <span class='badge bg-primary fs-6'>$$price</span>
                         </div>

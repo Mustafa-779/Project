@@ -1,102 +1,35 @@
-<div?php
+<?php
 // Include the database connection
 require_once 'jeek_DB.php';
-
-session_start(); // Start the session to retrieve user data if needed
-
-// Initialize variables for error/success messages
-$message = "";
-
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve and sanitize form data
-    $name = trim($_POST['name']);
-    $category = trim($_POST['category']);
-    $description = trim($_POST['description']);
-    $price = floatval($_POST['price']);
-    $quantity = intval($_POST['quantity']);
-
-    // Handle image upload
-    $image = isset($_FILES['image']['name']) && !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : "default.jpg";
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($image);
-
-    if (!empty($_FILES['image']['name']) && !move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-        $message = "Error uploading the image.";
-        $image = "default.jpg"; // Fallback image
-    }
-
-    $categoryQuery = $conn->prepare("SELECT categorie_id FROM Categories WHERE LOWER(name) = LOWER(?)");
-    $categoryQuery->bind_param("s", $category);
-    $categoryQuery->execute();
-    $categoryResult = $categoryQuery->get_result();
-
-    if ($categoryResult->num_rows > 0) {
-        $category_id = $categoryResult->fetch_assoc()['categorie_id'];
-
-        // Insert the new item into the Products table
-        $sql = $conn->prepare("INSERT INTO Products (categorie_id, name, price, description, image, quantity, status) 
-                                VALUES (?, ?, ?, ?, ?, ?, 'available')");
-        $sql->bind_param("isdssi", $category_id, $name, $price, $description, $image, $quantity);
-
-        try {
-            if ($sql->execute()) {
-                $message = "Item added successfully!";
-            } else {
-                $message = "Error adding item: " . $conn->error;
-            }
-        } catch (mysqli_sql_exception $e) {
-            $message = "Database error: " . $e->getMessage();
-        }
-    } else {
-        $message = "Error: Selected category does not exist.";
-    }
-}
 ?>
+
 
 <!doctype html>
 <html lang="en">
-<!-- Head Section: Contains metadata and external resource links -->
-
 <head>
-    <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
     <meta charset="UTF-8" />
-    <!-- Ensures responsive design for all devices (mobile-first design) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Title of the webpage, displayed on the browser tab -->
-    <title>Account</title>
-    <!-- Link to Bootstrap CSS for styling and responsive utilities -->
+    <title>List New Item</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Link to custom styles for further customization -->
     <link rel="stylesheet" href="css-main/navbar-footer.css" />
     <style>
-        /* Placeholder for additional custom styles (inline CSS) */
+        /* Custom styles */
+        .form-label {
+            font-weight: bold;
+        }
+        .sidebar {
+            height: 100%;
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
     </style>
 </head>
 
-<!-- Body Section -->
-
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navbar Section -->
     <header class="bg-primary py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <img src="imgs/jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2" style="height: 100px; width: 120px;">
-                <span class="fs-4 text-white"></span>
-            </div>
-
-            <div class="flex-grow-1 mx-3">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search for items..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Updated Navbar with Dropdown -->
+            <img src="imgs/jeek-high-resolution-logo-transparent.png" alt="Jeek Logo" class="me-2" style="height: 100px;">
             <nav class="d-flex align-items-center">
                 <ul class="nav me-3">
                     <li class="nav-item"><a href="logged-HomePage.php" class="nav-link text-white">Home</a></li>
@@ -106,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </ul>
 
                 <?php
-
+                session_start();
                 if (isset($_SESSION['username'])):
                 ?>
                     <!-- Dropdown menu for logged-in user -->
@@ -141,11 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </header>
 
-    <main class="container-fluid flex-grow-1">
+    <div class="container-fluid flex-grow-1">
         <div class="row">
-            <div class="col-md-2 shadow">
-                <!-- Sidebar -->
-                <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
+            <aside class="col-md-2 shadow">
+            <div class="nav nav-pills d-flex flex-column flex-shrink-0 text-light text-center">
                     <ul class="flex-column mb-auto p-0 py-2" style="font-size: 1.5rem; color: black">
                         <!-- List of links to key pages -->
                         <li class="nav-item">
@@ -158,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </li>
                         <li class="nav-item">
                             <div class="row">
-                                <a href="MyItems.php" class="icon-link nav-link" aria-current="page">
+                                <a href="myItems.php" class="icon-link nav-link" aria-current="page">
                                     <i class="bi bi-box display-6 mb-2" style="margin-right: 10px"></i>
                                     My Items
                                 </a>
@@ -182,17 +114,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </aside>
 
-            <main class="container my-5">
-                <?php if ($message): ?>
-                    <div class="alert alert-info">
-                        <?php echo $message; ?>
-                    </div>
-                <?php endif; ?>
-
-                <form method="POST" enctype="multipart/form-data">
+            <main class="col-md-9">
+                <span></span>
+                <form action="addItem.php" method="POST" enctype="multipart/form-data">
+                
                     <div class="mb-3">
+                        <br/>
                         <label for="name" class="form-label">*Item Name</label>
                         <input type="text" name="name" id="name" class="form-control" required />
                     </div>
@@ -228,103 +157,119 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Submit Item</button>
                     </div>
-                </form>
+                </for>
             </main>
+        </div>
+    </div>
+
+    <div id="notification" class="alert alert-primary" style="display: none; position: fixed; top: 100px; right: 20px; z-index: 1000;">
+        <span id="notification-message"></span>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            let errorMessage = "";
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == 'insertion_error') {
+                    echo 'errorMessage = "Insertion Failed. Try again.";';
+                } elseif ($_GET['error'] == 'sql_error') {
+                    echo 'errorMessage = "Database error. Try again";';
+                } elseif (isset($_GET['error']) == 'insertion_error1') {
+                    echo 'errorMessage = "Error: Selected category does not exist.";';
+                }
+            }
+            elseif(isset($_GET['successful']))
+                echo 'errorMessage = "Item added successfully!";';
+            ?>
+
+            if (errorMessage) {
+                // Display the notification
+                const notification = document.getElementById("notification");
+                const notificationMessage = document.getElementById("notification-message");
+
+                notificationMessage.textContent = errorMessage;
+                notification.style.display = "block";
 
 
+                setTimeout(function() {
+                    notification.style.opacity = "0"; // Fade out
+                    setTimeout(function() {
+                        notification.style.display = "none";
+                    }, 500);
+                }, 5000);
+            }
+        });
+    </script>
 
-            <!-- Footer -->
-            <footer class="mt-auto bg-light py-4">
-                <!-- Container to structure the footer content -->
-                <div class="container">
-                    <div class="row">
-                        <!-- Links Section: Provides quick navigation to important pages -->
-                        <div class="col-md-4 footer-links">
-                            <h5>Quick Links</h5>
-                            <ul class="list-unstyled">
-                                <!-- List of links to key pages -->
-                                <li><a href="logged-HomePage.php">Home</a></li>
-                                <li><a href="logged-categories.php">Categories</a></li>
-                                <li><a href="logged-about.php">About Us</a></li>
-                                <li><a href="logged-contact.php">Contact Us</a></li>
-                            </ul>
-                        </div>
+    <style>
+        /* Optional: Add a fade-out transition */
+        #notification {
+            transition: opacity 0.5s ease;
+            /* Adjust duration as needed */
+        }
+    </style>
 
-                        <!-- Middle Section: Highlights specific product categories -->
-                        <div class="col-md-4 footer-links">
-                            <h5>Categories</h5>
-                            <ul class="list-unstyled">
-                                <!-- Links to categories offered on the website -->
-                                <li><a href="logged-art.php">Art</a></li>
-                                <li><a href="logged-interiors.php">Interiors</a></li>
-                                <li><a href="logged-jewelry.php">Jewelry</a></li>
-                                <li><a href="logged-watches.php">Watches</a></li>
-                                <li><a href="logged-coins.php">Coins & Stamps</a></li>
-                                <li><a href="logged-bookss.php">Books & History</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Details Section -->
-                        <div class="col-md-4">
-                            <h5>Contact Us</h5>
-                            <ul class="list-unstyled">
-                                <!-- Phone numbers -->
-                                <li><i class="bi bi-telephone me-2"></i>+966 (0) 55 1234567</li>
-                                <li><i class="bi bi-telephone-fill me-2"></i>+966 (0) 0 1234567</li>
-                                <!-- Email address with clickable link -->
-                                <li>
-                                    <i class="bi bi-envelope me-2"></i>
-                                    <a href="mailto:info@storename.com" class="text-dark text-decoration-none">info@Jeek.com</a>
-                                </li>
-                                <!-- Website URL with clickable link -->
-                                <li>
-                                    <i class="bi bi-globe me-2"></i>
-                                    <a href="https://www.storename.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a>
-                                </li>
-                            </ul>
-
-                            <!-- Social Media Icons Section -->
-                            <div class="social-icons mt-3">
-                                <!-- Instagram icon linking to Instagram profile -->
-                                <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                                <!-- WhatsApp icon linking to WhatsApp -->
-                                <a href="https://www.whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                                <!-- Twitter (X) icon linking to Twitter profile -->
-                                <a href="https://www.x.com" target="_blank"><i class="bi bi-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Footer bottom section with copyright -->
-                    <div class="text-center mt-3">
-                        <p>© 2024 Jeek. All Rights Reserved</p>
-                    </div>
+    <footer class="mt-auto bg-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="logged-HomePage.php">Home</a></li>
+                        <li><a href="logged-categories.php">Categories</a></li>
+                        <li><a href="logged-about.php">About Us</a></li>
+                        <li><a href="logged-contact.php">Contact Us</a></li>
+                    </ul>
                 </div>
-            </footer>
-
-
-            <div class="modal fade" id="previewtModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                <!-- Modal container: Defines the dialog structure -->
-                <div class="modal-dialog">
-                    <!-- Modal content: Contains the header, body, and footer -->
-                    <div class="modal-content">
-                        <!-- Modal header with title and close button -->
-                        <div class="modal-header">
-                            <!-- Modal title -->
-                            <h5 class="modal-title" id="editModalLabel">Preview Item Page</h5>
-                            <!-- Close button (X): Dismisses the modal -->
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <div class="modal-body">
-                                <!-- Please, Insert "Item Page" body here. Then, do the js things to display user's input information-->
-                            </div>
-                        </div>
+                <div class="col-md-4 footer-links">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="logged-art.php">Art</a></li>
+                        <li><a href="logged-interiors.php">Interiors</a></li>
+                        <li><a href="logged-jewelry.php">Jewelry</a></li>
+                        <li><a href="logged-watches.php">Watches</a></li>
+                        <li><a href="logged-coins.php">Coins & Stamps</a></li>
+                        <li><a href="logged-books.php">Books & History</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-telephone me-2"></i>+966 (0) 55 1234567</li>
+                        <li><i class="bi bi-telephone-fill me-2"></i>+966 (0) 0 1234567</li>
+                        <li><i class="bi bi-envelope me-2"></i><a href="mailto:info@storename.com" class="text-dark text-decoration-none">info@Jeek.com</a></li>
+                        <li><i class="bi bi-globe me-2"></i><a href="https://www.storename.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a></li>
+                    </ul>
+                    <div class="social-icons mt-3">
+                        <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.x.com" target="_blank"><i class="bi bi-twitter"></i></a>
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-3">
+                <p>© 2024 Jeek. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
 
-            <!-- Bootstrap JS for interactivity -->
-            <script src="general.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="previewModalLabel">Preview Item Page</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Placeholder for item preview content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="general.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

@@ -80,6 +80,22 @@ CREATE TABLE IF NOT EXISTS Payments (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );";
 
+$sql_favorites = "
+CREATE TABLE IF NOT EXISTS Favorites (
+    product_id INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);";
+
+$sql_purchases = "
+CREATE TABLE IF NOT EXISTS Purchases (
+    product_id INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);";
+
 // Reviews table
 $sql_reviews = "
 CREATE TABLE IF NOT EXISTS Reviews (

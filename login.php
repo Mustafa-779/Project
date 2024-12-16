@@ -19,11 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Password is correct, set session variables and redirect
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
-            $_SESSION['first_name'] = $row['first_name'];
-            $_SESSION['last_name'] = $row['last_name'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['phone_number'] = $row['phone_number'];
-            $_SESSION['role'] = $row['role'];
+            $_SESSION['role'] = $row['role'];  // You can use this to check the role if needed
+
+            // Redirect to the logged-in page
             header("Location: logged-HomePage.php");
             exit();
         } else {

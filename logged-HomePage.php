@@ -55,7 +55,7 @@ $result = $conn->query($sql);
                 <?php
                 session_start();
                 if (isset($_SESSION['username'])):
-                    ?>
+                ?>
                     <!-- Dropdown menu for logged-in user -->
                     <div class="dropdown">
                         <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown"
@@ -73,12 +73,12 @@ $result = $conn->query($sql);
                             <li><a class="dropdown-item text-danger" href="HomePage.php">Sign Out</a></li>
                         </ul>
                     </div>
-                    <?php
+                <?php
                 else:
-                    ?>
+                ?>
                     <button class="btn btn-outline-light" data-bs-toggle="modal"
                         data-bs-target="#signInModal">Login</button>
-                    <?php
+                <?php
                 endif;
                 ?>
             </nav>
@@ -154,26 +154,26 @@ $result = $conn->query($sql);
     </section>
 
 
-<!-- Popular items section -->
-<section class="container mb-5">
-    <h2 class="mb-4 text-center text-primary">Popular Items</h2>
-    <div class="row g-4">
-        <?php
-        // Fetch products with the least quantity from the database
-        $sql = "SELECT * FROM Products WHERE status = 'available' ORDER BY quantity ASC LIMIT 6";
-        $result = $conn->query($sql);
+    <!-- Popular items section -->
+    <section class="container mb-5">
+        <h2 class="mb-4 text-center text-primary">Popular Items</h2>
+        <div class="row g-4">
+            <?php
+            // Fetch products with the least quantity from the database
+            $sql = "SELECT * FROM Products WHERE status = 'available' ORDER BY quantity ASC LIMIT 6";
+            $result = $conn->query($sql);
 
-        // Loop through products and display them in cards
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $product_id = $row['product_id']; // Assuming the primary key is product_id
-                $name = $row['name'];
-                $description = $row['description'];
-                $price = $row['price'];
-                $image = $row['image'];
+            // Loop through products and display them in cards
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $product_id = $row['product_id']; // Assuming the primary key is product_id
+                    $name = $row['name'];
+                    $description = $row['description'];
+                    $price = $row['price'];
+                    $image = $row['image'];
 
-                // Link to the product details page with the product ID
-                echo "
+                    // Link to the product details page with the product ID
+                    echo "
                 <div class='col-md-4'>
                     <a href='logged-product_page.php?id=$product_id' class='card shadow-lg border-0 hover-effect text-decoration-none'>
                         <div class='card-img-overlay text-end p-2'>
@@ -186,92 +186,17 @@ $result = $conn->query($sql);
                     </a>
                 </div>
                 ";
+                }
+            } else {
+                echo "<p>No products available at the moment.</p>";
             }
-        } else {
-            echo "<p>No products available at the moment.</p>";
-        }
-        ?>
-    </div>
-</section>
+            ?>
+        </div>
+    </section>
 
 
 
 
 </main>
 
-<!-- Footer -->
-<footer class="mt-auto bg-light py-4">
-    <!-- Container to structure the footer content -->
-    <div class="container">
-        <div class="row">
-            <!-- Links Section: Provides quick navigation to important pages -->
-            <div class="col-md-4 footer-links">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <!-- List of links to key pages -->
-                    <li><a href="logged-HomePage.php">Home</a></li>
-                    <li><a href="logged-categories.php">Categories</a></li>
-                    <li><a href="logged-about.php">About Us</a></li>
-                    <li><a href="logged-contact.php">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Middle Section: Highlights specific product categories -->
-            <div class="col-md-4 footer-links">
-                <h5>Categories</h5>
-                <ul class="list-unstyled">
-                    <!-- Links to categories offered on the website -->
-                    <li><a href="logged-art.php">Art</a></li>
-                    <li><a href="logged-interiors.php">Interiors</a></li>
-                    <li><a href="logged-jewelry.php">Jewelry</a></li>
-                    <li><a href="logged-watches.php">Watches</a></li>
-                    <li><a href="logged-coins.php">Coins & Stamps</a></li>
-                    <li><a href="logged-bookss.php">Books & History</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Details Section -->
-            <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <ul class="list-unstyled">
-                    <!-- Phone numbers -->
-                    <li><i class="bi bi-telephone me-2"></i>+966 (0) 55 1234567</li>
-                    <li><i class="bi bi-telephone-fill me-2"></i>+966 (0) 0 1234567</li>
-                    <!-- Email address with clickable link -->
-                    <li>
-                        <i class="bi bi-envelope me-2"></i>
-                        <a href="mailto:info@storename.com" class="text-dark text-decoration-none">info@Jeek.com</a>
-                    </li>
-                    <!-- Website URL with clickable link -->
-                    <li>
-                        <i class="bi bi-globe me-2"></i>
-                        <a href="https://www.storename.com" target="_blank"
-                            class="text-dark text-decoration-none">www.Jeek.com</a>
-                    </li>
-                </ul>
-
-                <!-- Social Media Icons Section -->
-                <div class="social-icons mt-3">
-                    <!-- Instagram icon linking to Instagram profile -->
-                    <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                    <!-- WhatsApp icon linking to WhatsApp -->
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                    <!-- Twitter (X) icon linking to Twitter profile -->
-                    <a href="https://www.x.com" target="_blank"><i class="bi bi-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer bottom section with copyright -->
-        <div class="text-center mt-3">
-            <p>© 2024 Jeek. All Rights Reserved</p>
-        </div>
-    </div>
-</footer>
-
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Include the JavaScript for password confirmation -->
-
-</html>
+<?php include "Footer.php"; ?>

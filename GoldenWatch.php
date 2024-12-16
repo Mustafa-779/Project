@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Head Section: Contains metadata and external resource links -->
-    <head>
-        <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
-        <meta charset="UTF-8">
-        <!-- Ensures responsive design for all devices (mobile-first design) -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Title of the webpage, displayed on the browser tab -->
-        <title>Home Page</title>
-        <!-- Link to Bootstrap CSS for styling and responsive utilities -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-        
-        <!-- Styles for Navbar and Footer -->
-        <link rel="stylesheet" href="css-main/navbar-footer.css">
-        <!-- Styles for Cards -->
-        <link rel="stylesheet" href="css-main/cards.css">
-        <style>
-            /* Placeholder for additional custom styles (inline CSS) */
-        </style>
-    </head>
+<!-- Head Section: Contains metadata and external resource links -->
 
-    <!-- Body Section -->
+<head>
+    <!-- Sets the character encoding for the document to UTF-8 (standard for web content) -->
+    <meta charset="UTF-8">
+    <!-- Ensures responsive design for all devices (mobile-first design) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage, displayed on the browser tab -->
+    <title>Home Page</title>
+    <!-- Link to Bootstrap CSS for styling and responsive utilities -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to Bootstrap Icons for using pre-designed vector icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Styles for Navbar and Footer -->
+    <link rel="stylesheet" href="css-main/navbar-footer.css">
+    <!-- Styles for Cards -->
+    <link rel="stylesheet" href="css-main/cards.css">
+    <style>
+        /* Placeholder for additional custom styles (inline CSS) */
+    </style>
+</head>
+
+<!-- Body Section -->
+
 <body class="d-flex flex-column min-vh-100">
     <!-- Navbar Section -->
     <header class="bg-primary py-3">
@@ -40,10 +42,10 @@
             <div class="flex-grow-1 mx-3">
                 <form class="d-flex">
                     <!-- Input field for search -->
-                    <input 
-                        class="form-control me-2" 
-                        type="search" 
-                        placeholder="Search for items..." 
+                    <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search for items..."
                         aria-label="Search">
                     <!-- Search button -->
                     <button class="btn btn-outline-light" type="submit">
@@ -68,7 +70,7 @@
             </nav>
         </div>
     </header>
-    </body>
+</body>
 
 <!-- Login modal (Pop-up) -->
 <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
@@ -144,7 +146,7 @@
             <div class="modal-body">
                 <!-- Informational text -->
                 <p class="mb-4">
-                    Enter your username and email address and press the SEND button to request a new password. 
+                    Enter your username and email address and press the SEND button to request a new password.
                 </p>
 
                 <!-- Forgot Password form -->
@@ -233,21 +235,21 @@
                             <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email address">
                         </div>
                     </div>
-                    
+
                     <div class="mb-3">
-    <label for="phoneNumber" class="form-label">Phone Number</label>
-    <div class="input-group">
-        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-        <input 
-            type="tel" 
-            class="form-control" 
-            id="phoneNumber" 
-            name="phone_number" 
-            minlength="10" 
-            required 
-            placeholder="Enter your phone number">
-    </div>
-</div>
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="phoneNumber"
+                                name="phone_number"
+                                minlength="10"
+                                required
+                                placeholder="Enter your phone number">
+                        </div>
+                    </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -301,73 +303,73 @@
     </div>
 </div>
 
-    <main class="flex-grow-1 my-5">
+<main class="flex-grow-1 my-5">
 
-        
-        <div class="container">
-            <!-- Item Section -->
-            <section class="row align-items-center">
-                <!-- Left Side: Image and Item Name -->
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-4 fw-bold text-primary">3 Eyes Gold Geneva Casual Quartz Watch</h2>
-                    <p class="fs-4 text-danger fw-bold m-0">
-                        <i class="bi bi-tag-fill me-2"></i>$1177
+
+    <div class="container">
+        <!-- Item Section -->
+        <section class="row align-items-center">
+            <!-- Left Side: Image and Item Name -->
+            <div class="col-md-6 text-center">
+                <h2 class="mb-4 fw-bold text-primary">3 Eyes Gold Geneva Casual Quartz Watch</h2>
+                <p class="fs-4 text-danger fw-bold m-0">
+                    <i class="bi bi-tag-fill me-2"></i>$1177
+                </p>
+                <img src="imgs/Goldwatch.jpg" alt="Item Image" class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Right Side: Description and Details -->
+            <div class="col-md-6">
+                <!-- Description Section -->
+                <div class="mb-4">
+                    <h4 class="fw-bold text-secondary">Description</h4>
+                    <p class="text-muted">
+                        This luxurious gold watch is crafted with precision and style. Its timeless design complements any outfit, making it a perfect accessory for any occasion. Experience unmatched elegance and functionality.
                     </p>
-                    <img src="imgs/Goldwatch.jpg" alt="Item Image" class="img-fluid rounded shadow">
                 </div>
-    
-                <!-- Right Side: Description and Details -->
-                <div class="col-md-6">
-                    <!-- Description Section -->
-                    <div class="mb-4">
-                        <h4 class="fw-bold text-secondary">Description</h4>
-                        <p class="text-muted">
-                            This luxurious gold watch is crafted with precision and style. Its timeless design complements any outfit, making it a perfect accessory for any occasion. Experience unmatched elegance and functionality.
-                        </p>
-                    </div>
-    
-                    <!-- Rating Section -->
-                    <div class="mb-4">
-                        <h5 class="fw-bold text-secondary">Rating</h5>
-                        <div class="d-flex align-items-center">
-                            <span class="text-warning fs-4 me-2">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </span>
-                            <span class="text-muted">(4.5/5)</span>
-                        </div>
-                    </div>
-    
-                    <!-- Additional Details -->
-                    <div class="mb-4">
-                        <h5 class="fw-bold text-secondary">Features</h5>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Water-resistant</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>High-precision quartz movement</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Scratch-resistant</li>
-                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Two-year warranty</li>
-                        </ul>
-                    </div>
-    
-                    <!-- Buttons -->
-                    <div class="d-flex gap-3">
-                        <button class="btn btn-outline-primary btn-lg w-50">
-                            <i class="bi bi-heart-fill me-2"></i>Add to Favorites
-                        </button>
-                        <button class="btn btn-outline-danger btn-lg w-50">
-                            <i class="bi bi-flag-fill me-2"></i>Report
-                        </button>
-                    </div>
 
-                    
+                <!-- Rating Section -->
+                <div class="mb-4">
+                    <h5 class="fw-bold text-secondary">Rating</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="text-warning fs-4 me-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </span>
+                        <span class="text-muted">(4.5/5)</span>
+                    </div>
                 </div>
-            </section>
-        </div>
-    </main>
-    
+
+                <!-- Additional Details -->
+                <div class="mb-4">
+                    <h5 class="fw-bold text-secondary">Features</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Water-resistant</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>High-precision quartz movement</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Scratch-resistant</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Two-year warranty</li>
+                    </ul>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex gap-3">
+                    <button class="btn btn-outline-primary btn-lg w-50">
+                        <i class="bi bi-heart-fill me-2"></i>Add to Favorites
+                    </button>
+                    <button class="btn btn-outline-danger btn-lg w-50">
+                        <i class="bi bi-flag-fill me-2"></i>Report
+                    </button>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</main>
+
 
 <!-- Contact the Owner -->
 <div class="contact-owner-section p-4 mb-4">
@@ -389,75 +391,8 @@
 
 
 
-        </section>
-    </div>
+</section>
+</div>
 </main>
 
-    
-<!-- Footer Area and adds color -->
-<footer class="mt-auto bg-light py-4">
-    <!-- Container to structure the footer content -->
-    <div class="container">
-        <div class="row">
-            <!-- Links Section: Provides quick navigation to important pages -->
-            <div class="col-md-4 footer-links">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <!-- List of links to key pages -->
-                    <li><a href="HomePage.php">Home</a></li>
-                    <li><a href="Categories.php">Categories</a></li>
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <!-- Middle Section: Highlights specific product categories -->
-            <div class="col-md-4 footer-links">
-                <h5>Categories</h5>
-                <ul class="list-unstyled">
-                    <!-- Links to categories offered on the website -->
-                    <li><a href="art.php">Art</a></li>
-                    <li><a href="interiors.php">Interiors</a></li>
-                    <li><a href="jewelry.php">Jewelry</a></li>
-                    <li><a href="watches.php">Watches</a></li>
-                    <li><a href="coins.php">Coins & Stamps</a></li>
-                    <li><a href="bookss.php">Books & History</a></li>
-                </ul>
-            </div>
-            
-            <!-- Contact Details Section -->
-            <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <ul class="list-unstyled">
-                    <!-- Phone numbers -->
-                    <li><i class="bi bi-telephone me-2"></i>+966 (0) 55 1234567</li>
-                    <li><i class="bi bi-telephone-fill me-2"></i>+966 (0) 0 1234567</li>
-                    <!-- Email address with clickable link -->
-                    <li><i class="bi bi-envelope me-2"></i><a href="mailto:info@jeek.com" class="text-dark text-decoration-none">info@Jeek.com</a></li>
-                    <!-- Website URL with clickable link -->
-                    <li><i class="bi bi-globe me-2"></i><a href="https://www.jeek.com" target="_blank" class="text-dark text-decoration-none">www.Jeek.com</a></li>
-                </ul>
-                
-                <!-- Social Media Icons Section -->
-                <div class="social-icons mt-3">
-                    <!-- Instagram icon linking to Instagram profile -->
-                    <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                    <!-- WhatsApp icon linking to WhatsApp -->
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                    <!-- Twitter (X) icon linking to Twitter profile -->
-                    <a href="https://www.x.com" target="_blank"><i class="bi bi-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer bottom section with copyright -->
-        <div class="text-center mt-3">
-            <p>© 2024 Jeek. All Rights Reserved</p>
-        </div>
-    </div>
-</footer>
-
-
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php include "Footer.php"; ?>

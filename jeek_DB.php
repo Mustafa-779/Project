@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Users (
     last_name VARCHAR(255) NOT NULL,
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    phone_number VARCHAR(15),
+    phone_number VARCHAR(15) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     security_question VARCHAR(255) NOT NULL, -- Security question
     security_answer VARCHAR(255) NOT NULL,   -- Answer to the security question

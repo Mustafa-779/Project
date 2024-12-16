@@ -1,15 +1,15 @@
 <?php
-// db_connection.php
+session_start();
 
-$servername = "localhost";  // Your MySQL server, usually "localhost"
-$username = "root";         // Your MySQL username, typically "root"
-$password = "";             // Your MySQL password, typically empty for localhost
-$dbname = "jeek_DB";  // Replace with your database name
+// Database credentials
+$host = 'localhost';
+$username = 'root'; 
+$password = '';     
+$dbname = 'jeek_DB';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $username, $password, $dbname);
 
-// Check connection
+// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
